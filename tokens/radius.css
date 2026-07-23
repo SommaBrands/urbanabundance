@@ -1,0 +1,29 @@
+:root{
+  /* Organic, generous rounding — "rounded, breathable, natural" */
+  --radius-xs:6px;
+  --radius-sm:10px;
+  --radius-md:16px;
+  --radius-lg:24px;
+  --radius-xl:32px;
+  --radius-2xl:44px;
+  --radius-pill:999px;
+  --radius-leaf:44% 44% 44% 6px; /* seed-packet / leaf corner */
+
+  /* ---- Soft, warm, low shadows (tinted with soil, not black) ---- */
+  --shadow-xs:0 1px 2px rgba(44,40,34,0.06);
+  --shadow-sm:0 2px 8px rgba(44,40,34,0.07);
+  --shadow-md:0 8px 24px rgba(44,40,34,0.09);
+  --shadow-lg:0 18px 44px rgba(44,40,34,0.12);
+  --shadow-brand:0 12px 28px rgba(53,112,45,0.22);
+
+  /* ---- Borders ---- */
+  --border-width:1px;
+  --border-hairline:1px solid var(--border);
+
+  /* ---- Motion — "grow, bloom, fade, float; never bounce aggressively" ---- */
+  --ease-grow:cubic-bezier(0.22,0.61,0.36,1); /* @kind other */
+  --ease-soft:cubic-bezier(0.4,0,0.2,1); /* @kind other */
+  --dur-fast:140ms; /* @kind other */
+  --dur:240ms;      /* @kind other */
+  --dur-slow:420ms; /* @kind other */
+}

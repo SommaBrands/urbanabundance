@@ -1,0 +1,37 @@
+# Netlify redirects — legacy urbanabundance.com (WordPress) URLs → new site routes.
+# Format: from  to  status
+
+# Contact / lead form
+/new-customer-form/                                     /#/contact   301
+/contact-us/                                            /#/contact   301
+
+# Services → How It Works
+/edible-garden-maintenance/                             /#/how       301
+/edible-garden-design/                                  /#/how       301
+
+# Residential
+/urban-abundance-south-florida-edible-gardens/          /#/residential  301
+/new-construction-gardens-urban-abundance-florida/      /#/residential  301
+/garden-beds/                                           /#/residential  301
+/garden-accessories/                                    /#/residential  301
+
+# Commercial
+/restaurant-garden/                                     /#/commercial   301
+/community-gardens-urban-abundance-florida/             /#/commercial   301
+/urban-abundance-south-florida-edible-gardens-2/        /#/commercial   301
+/treatment-center-gardens-urban-abundance-florida/      /#/commercial   301
+/personal-chef-garden-urban-abundance-florida/          /#/commercial   301
+
+# About
+/our-team/                                              /#/about     301
+/our-story/                                             /#/about     301
+
+# Blog / seasonal / press
+/blog                                                   /#/blog      301
+/growing-season/                                        /#/blog      301
+/summer-harvest-at-urban-abundance/                     /#/blog      301
+/winter-harvest-at-urban-abundance/                     /#/blog      301
+/category/*                                             /#/blog      301
+/author/*                                               /#/blog      301
+
+# Anything else unmatched falls through to Netlify's default 404 page (404.html).

@@ -1,0 +1,73 @@
+:root{
+  /* ============================================================
+     PALETTE PHILOSOPHY — light natural base, brand colors sparingly.
+     Backgrounds & surfaces are soft natural neutrals. The THREE logo
+     colors are the accent trio, used sparingly for emphasis:
+       • Grass green  #89C377   • Lime green #C8DB4B   • Soil gray #706C61
+     ============================================================ */
+
+  /* ---- The three logo colors (the accent trio) ---- */
+  --green-grass:#89C377;     /* grass green — primary brand accent */
+  --green-leaf:#89C377;      /* alias */
+  --green-lime:#C8DB4B;      /* lime green — bright highlight accent */
+  --soil:#706C61;            /* ground-soil gray — neutral brand anchor, dark UI */
+
+  /* ---- Deep greens (for AA-legible text/buttons on light) ---- */
+  --green-deep:#35702D;      /* basil — links & primary button text-weight green */
+  --green-forest:#264F20;    /* deepest foliage — hover, headings on light */
+  --green-mist:#EDF4E2;      /* pale grass wash — soft tints, fills */
+
+  /* ---- Light natural neutrals (the dominant base) ---- */
+  --white:#FFFFFF;
+  --paper:#FCFBF6;           /* page background — soft natural white */
+  --cream:#FCFBF6;           /* alias */
+  --bone:#F5F2E9;            /* sunk surfaces, chips */
+  --sand-100:#F5F2E9;        /* alias */
+  --sand-200:#E7E2D5;        /* borders & dividers */
+  --oat:#EDE8DB;             /* alt section band */
+
+  /* ---- Soil-gray neutral ramp (text + muted UI, from the logo gray) ---- */
+  --soil-900:#33302A;        /* strong text — deep warm gray */
+  --ink:#33302A;             /* alias */
+  --soil-700:#4F4B42;        /* body text */
+  --taupe:#706C61;           /* = soil — captions, muted UI */
+  --taupe-400:#948F82;       /* placeholder / disabled */
+  --taupe-300:#C3BEB1;       /* hairlines on dark */
+
+  /* ---- Status accents (used rarely, for feedback only) ---- */
+  --tomato:#CE4A2F;          /* danger / alerts */
+  --sun:#E9B949;             /* warning / highlight */
+  --sky:#7FB0C4;             /* informational only */
+
+  /* ---- Semantic aliases ---- */
+  --color-bg:var(--paper);
+  --surface-card:var(--white);
+  --surface-sunk:var(--bone);
+  --surface-brand:var(--soil);          /* large dark fields = soil gray, not black */
+  --surface-brand-soft:var(--green-mist);
+  --border:var(--sand-200);
+  --border-strong:var(--taupe-300);
+
+  --text-strong:var(--soil-900);
+  --text-body:var(--soil-700);
+  --text-muted:var(--taupe);
+  --text-on-brand:var(--white);
+  --text-on-lime:var(--soil-900);
+
+  --brand:var(--green-deep);
+  --brand-hover:var(--green-forest);
+  --brand-bright:var(--green-lime);
+  --secondary:var(--soil);
+  --secondary-hover:#5B584F;
+  --accent:var(--green-grass);
+
+  --focus-ring:#5FA34D;
+
+  --status-success:var(--green-deep);
+  --status-warning:var(--sun);
+  --status-danger:var(--tomato);
+  --status-info:var(--sky);
+
+  --link:var(--green-deep);
+  --link-hover:var(--green-forest);
+}

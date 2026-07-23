@@ -1,0 +1,6 @@
+/* Urban Abundance webfonts — "Cultivated" refresh (v2).
+   Fonts accepted by the client as substitutes for the licensed brand faces:
+   - Newsreader      → editorial display serif (headlines, pull quotes, italic flourishes)
+   - Hanken Grotesk  → modern grotesque for all body & UI
+   The rounded logo wordmark stays as locked art; this type system lives around it. */
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap');

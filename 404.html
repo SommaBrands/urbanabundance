@@ -1,0 +1,39 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Page not found — Urban Abundance</title>
+<meta name="robots" content="noindex,follow">
+<link rel="stylesheet" href="./styles.css">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<script>
+/* Redirect legacy WordPress URLs to the new single-page site.
+   Maps an old path to a route hash the SPA reads on load; unknown paths → home. */
+(function () {
+  var path = (location.pathname || '').toLowerCase();
+  var map = [
+    [/new-customer-form|contact/, 'contact'],
+    [/edible-garden-design|edible-garden-maintenance|growing-season|maintenance/, 'how'],
+    [/personal-chef|restaurant|community-garden|assisted-living|treatment-center|commercial/, 'commercial'],
+    [/home-garden|south-florida-edible-gardens|new-construction|garden-beds|garden-accessories|residential/, 'residential'],
+    [/our-team|our-story|about|mission/, 'about'],
+    [/blog|the-dirt|category|author|harvest|press|spotlight|page_id/, 'blog']
+  ];
+  var route = 'home';
+  for (var i = 0; i < map.length; i++) { if (map[i][0].test(path)) { route = map[i][1]; break; } }
+  location.replace('/' + (route === 'home' ? '' : '#/' + route));
+})();
+</script>
+<style>
+body{margin:0;font-family:'Hanken Grotesk',system-ui,sans-serif;background:var(--paper,#FCFBF6);color:var(--soil-900,#33302A);min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:40px}
+.b{max-width:520px}
+h1{font-family:'DM Serif Display',Georgia,serif;font-size:72px;line-height:1;margin:0 0 12px;color:var(--green-deep,#35702D)}
+h2{font-family:'DM Serif Display',Georgia,serif;font-weight:400;font-size:30px;margin:0 0 14px}
+p{font-size:17px;line-height:1.6;color:var(--soil-700,#4F4B42);margin:0 0 26px}
+a{display:inline-block;font-family:'Hanken Grotesk',sans-serif;font-weight:700;background:var(--green-lime,#C8DB4B);color:var(--soil-900,#33302A);text-decoration:none;padding:15px 26px;border-radius:14px}
+</style></head>
+<body>
+<div class="b">
+<h1>404</h1>
+<h2>This patch hasn't been planted yet.</h2>
+<p>The page you're looking for has moved or doesn't exist. We're taking you back to the garden — or head home below.</p>
+<a href="/">Back to Urban Abundance →</a>
+</div>
+</body></html>
