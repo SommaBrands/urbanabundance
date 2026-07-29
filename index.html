@@ -44,21 +44,1182 @@
 <p>Homeowners, restaurants, community &amp; wellness spaces across Palm Beach County — Boca Raton to Jupiter.</p>
 <p>Call <a href="tel:5613191272">561-319-1272</a> or email <a href="mailto:info@urbanabundance.com">info@urbanabundance.com</a> to book a free garden assessment.</p>
 </noscript>
-<script type="text/babel" src="Icons.jsx"></script>
-<script type="text/babel" src="Shared.jsx"></script>
-<script type="text/babel" src="Home.jsx"></script>
-<script type="text/babel" src="HowItWorks.jsx"></script>
-<script type="text/babel" src="Residential.jsx"></script>
-<script type="text/babel" src="Commercial.jsx"></script>
-<script type="text/babel" src="About.jsx"></script>
-<script type="text/babel" src="Blog.jsx"></script>
-<script type="text/babel" src="Contact.jsx"></script>
 <script type="text/babel" data-presets="react">
+// ===== Icons =====
+(function(){
+// UA 2.0 — brand icon set. Clean, single-color, rounded line style.
+// All icons inherit `color` via currentColor. viewBox 0 0 24 24.
+const P = {
+  sprout: <><path d="M7 20h10" /><path d="M12 20c0-4 0-6 0-8" /><path d="M12 12C11 9 8 8.5 5 8.7c.2 3 2.2 4.8 5 4.6" /><path d="M12 11c.8-2.6 3.4-3.4 6-3.2-.2 2.7-2 4.4-4.6 4.2" /></>,
+  seedling: <><path d="M12 21v-7" /><path d="M12 14C10.5 11 7 11 5 11.5c.4 3 3 4 5 3.2" /><path d="M12 12c1-2.5 4-2.6 6-2-.3 2.6-2.4 3.6-4.6 3" /></>,
+  leaf: <><path d="M11 20C6 20 4 15.5 4 11 9 11 12 8 13 3c3 2 5 5 5 9 0 4.5-3 8-7 8Z" /><path d="M11 20c-1-4-1-7 0-10" /></>,
+  herb: <><path d="M12 21v-9" /><path d="M12 12c-1-2-3.2-2.4-5-2 .3 2.2 2 3.3 3.6 2.8" /><path d="M12 13c1-2 3.2-2.4 5-2-.3 2.2-2 3.3-3.6 2.8" /><path d="M12 8c-.8-1.6-2.6-2-4-1.7.3 1.8 1.7 2.7 3 2.3" /></>,
+  carrot: <><path d="M6 18c-1 1-1 1 0 0Z" /><path d="M17 8 8.5 16.5a3 3 0 0 1-4.2 0v0a3 3 0 0 1 0-4.2L12.8 4" /><path d="M15 6c1-1 3-1 4 0M16 5c0-1.5 1-3 2.5-3.5" /><path d="M11 12l2 2M8 15l2 2" /></>,
+  flower: <><circle cx="12" cy="12" r="2.4" /><path d="M12 9.6C12 6.5 10.5 5 12 3.5 13.5 5 12 6.5 12 9.6Z" /><path d="M12 14.4c0 3.1 1.5 4.6 0 6.1-1.5-1.5 0-3 0-6.1Z" /><path d="M9.6 12C6.5 12 5 10.5 3.5 12 5 13.5 6.5 12 9.6 12Z" /><path d="M14.4 12c3.1 0 4.6 1.5 6.1 0-1.5-1.5-3 0-6.1 0Z" /></>,
+  fruit: <><circle cx="12" cy="14" r="6.5" /><path d="M12 7.5C12 5 13.5 3 16 3c0 2.2-1.4 4.5-4 4.5Z" /></>,
+  sun: <><circle cx="12" cy="12" r="4" /><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M18.4 5.6 17 7M7 17l-1.4 1.4" /></>,
+  droplet: <path d="M12 3c3 4 6 6.8 6 10.3A6 6 0 0 1 6 13.3C6 9.8 9 7 12 3Z" />,
+  calendar: <><rect x="4" y="5" width="16" height="16" rx="3" /><path d="M4 9h16M8 3v4M16 3v4" /><path d="m9 15 2 2 4-4" /></>,
+  broadcast: <><rect x="3" y="8" width="18" height="12" rx="2.5" /><path d="m8 8 4-4 4 4" /><path d="M9 20h6" /></>,
+  check: <path d="M20 6 9 17l-5-5" />,
+  phone: <path d="M6.5 3.5h3l1.5 4-2 1.5a12 12 0 0 0 6 6l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A16 16 0 0 1 4.5 5.7 2 2 0 0 1 6.5 3.5Z" />,
+  pin: <><path d="M12 21s7-6.4 7-11a7 7 0 1 0-14 0c0 4.6 7 11 7 11Z" /><circle cx="12" cy="10" r="2.6" /></>,
+  clock: <><circle cx="12" cy="12" r="8.5" /><path d="M12 7.5V12l3 2" /></>,
+  basket: <><path d="M5 9h14l-1.3 9.2a2 2 0 0 1-2 1.8H8.3a2 2 0 0 1-2-1.8Z" /><path d="m8.5 9 3.5-5 3.5 5" /><path d="M10 13v3M14 13v3" /></>,
+  gift: <><rect x="4" y="9" width="16" height="11" rx="2" /><path d="M4 13h16M12 9v11" /><path d="M12 9C11 5 8 5 7.5 6.6 7 8.2 9.5 9 12 9Zm0 0c1-4 4-4 4.5-2.4C17 8.2 14.5 9 12 9Z" /></>,
+  chat: <path d="M5 5h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H10l-4 3v-3H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z" />,
+  cycle: <><path d="M4.5 12a7.5 7.5 0 0 1 12.9-5.2L20 9" /><path d="M19.5 12a7.5 7.5 0 0 1-12.9 5.2L4 15" /><path d="M20 4v5h-5M4 20v-5h5" /></>,
+  heart: <path d="M12 20S4 15 4 9a4 4 0 0 1 8-1 4 4 0 0 1 8 1c0 6-8 11-8 11Z" />,
+  book: <><path d="M5 4h9a3 3 0 0 1 3 3v13a2.5 2.5 0 0 0-2.5-2.5H5Z" /><path d="M5 4v13.5" /></>,
+  ruler: <><rect x="3" y="8" width="18" height="8" rx="2" transform="rotate(-45 12 12)" /><path d="M9 9.5 10.5 11M11.5 7l1.5 1.5M6.5 12l1.5 1.5" /></>,
+  spark: <path d="M12 3c.6 4.2 1.8 5.4 6 6-4.2.6-5.4 1.8-6 6-.6-4.2-1.8-5.4-6-6 4.2-.6 5.4-1.8 6-6Z" />,
+  star: <path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 17l-5.2 2.6 1-5.8-4.3-4.1 5.9-.9Z" />,
+  instagram: <><rect x="4" y="4" width="16" height="16" rx="5" /><circle cx="12" cy="12" r="3.6" /><circle cx="16.6" cy="7.4" r="1" fill="currentColor" stroke="none" /></>,
+  facebook: <path d="M14.5 8.5H16V5.7h-2.2c-2 0-3.3 1.3-3.3 3.4v1.6H8.2v2.8h2.3V21h2.9v-7.5h2.2l.4-2.8h-2.6V9.4c0-.6.3-.9 1-.9Z" />,
+  youtube: <><rect x="3" y="6.5" width="18" height="11" rx="3.5" /><path d="m10.5 9.5 4.5 2.5-4.5 2.5Z" fill="currentColor" stroke="none" /></>,
+};
+const FILLED = new Set(['star', 'spark', 'droplet', 'heart', 'fruit', 'facebook']);
+function Icon({ name, size = 20, stroke = 1.8, style, ...rest }) {
+  const kids = P[name] || P.leaf;
+  const filled = FILLED.has(name);
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24"
+      fill={filled ? 'currentColor' : 'none'} stroke="currentColor"
+      strokeWidth={filled ? 0 : stroke} strokeLinecap="round" strokeLinejoin="round"
+      style={{ display: 'block', flex: 'none', ...style }} aria-hidden="true" {...rest}>
+      {kids}
+    </svg>
+  );
+}
+function Stars({ n = 5, size = 15, color = 'var(--green-deep)' }) {
+  return <span style={{ display: 'inline-flex', gap: 2, color }}>{Array.from({ length: n }).map((_, i) => <Icon key={i} name="star" size={size} />)}</span>;
+}
+Object.assign(window, { Icon, Stars });
+
+})();
+
+// ===== Shared =====
+(function(){
+// Shared chrome + UI helpers for the UA 2.0 prototype.
+const NAV = [
+  ['Home', 'home'],
+  ['How It Works', 'how'],
+  ['Residential', 'residential'],
+  ['Commercial', 'commercial'],
+  ['Our Story', 'about'],
+  ['Nursery', 'nursery'],
+  ['Contact', 'contact'],
+];
+const MAIN = [
+  ['How It Works', 'how'],
+  ['Residential', 'residential'],
+  ['Commercial', 'commercial'],
+  ['Contact', 'contact'],
+];
+const MORE = [
+  ['Nursery', 'nursery'],
+  ['Blog', 'blog'],
+  ['Our Story', 'about'],
+];
+
+function Ticker() {
+  const { Icon } = window;
+  const items = [
+    ['sprout', <>Now planting <b>Winter 2026</b> gardens</>],
+    ['calendar', <>Free garden assessments open</>],
+    ['broadcast', <>As seen on <b>WPBF 25 News</b></>],
+    ['leaf', <>Fresh harvests, <b>zero effort</b></>],
+  ];
+  const run = [...items, ...items];
+  return (
+    <div className="ticker"><div className="run">
+      {run.map((it, i) => <span key={i}><Icon name={it[0]} size={16} style={{ color: 'var(--green-lime)' }} /> {it[1]}</span>)}
+    </div></div>
+  );
+}
+
+function Header({ page, go }) {
+  const { Icon } = window;
+  const [moreOpen, setMoreOpen] = React.useState(false);
+  const [navOpen, setNavOpen] = React.useState(false);
+  const moreActive = MORE.some(([, id]) => id === page);
+  const goM = (id) => { setNavOpen(false); go(id); };
+  return (
+    <header className="site">
+      <div className="nav">
+        <img className="logo" src="./assets/logo-horizontal.png" alt="Urban Abundance — edible garden design and maintenance" onClick={() => go('home')} />
+        <div className="links">
+          {MAIN.map(([label, id]) => (
+            <a key={id} href={'/' + (id === 'home' ? '' : id)} className={page === id ? 'active' : ''} onClick={(e) => { e.preventDefault(); go(id); }}>{label}</a>
+          ))}
+          <div style={{ position: 'relative' }} onMouseEnter={() => setMoreOpen(true)} onMouseLeave={() => setMoreOpen(false)}>
+            <a className={moreActive ? 'active' : ''} style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }} onClick={() => setMoreOpen(o => !o)}>More <span style={{ display: 'inline-block', transform: moreOpen ? 'rotate(180deg)' : 'none', transition: 'transform .18s', fontSize: 11 }}>▾</span></a>
+            {moreOpen && (
+              <div style={{ position: 'absolute', top: '100%', left: -14, marginTop: 8, minWidth: 190, background: '#fff', border: '1px solid var(--sand-200)', borderRadius: 12, boxShadow: '0 16px 36px rgba(51,48,42,.14)', padding: 8, zIndex: 50 }}>
+                {MORE.map(([label, id]) => (
+                  <a key={id} onClick={() => { setMoreOpen(false); go(id); }} style={{ display: 'block', padding: '10px 12px', borderRadius: 8, fontFamily: 'var(--font-ui)', fontWeight: 600, fontSize: 15, color: page === id ? 'var(--green-deep)' : 'var(--soil-700)', background: page === id ? 'var(--bone)' : 'transparent' }}>{label}</a>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+        <span className="phone">561-319-1272</span>
+        <a className="btn btn-lime sm" onClick={() => go('contact')}>Book Assessment</a>
+        <button className="nav-toggle" aria-label="Menu" onClick={() => setNavOpen(o => !o)}>
+          <span style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+            <span style={{ width: 20, height: 2, background: 'currentColor', borderRadius: 2, transition: 'transform .2s', transform: navOpen ? 'translateY(6px) rotate(45deg)' : 'none' }} />
+            <span style={{ width: 20, height: 2, background: 'currentColor', borderRadius: 2, opacity: navOpen ? 0 : 1 }} />
+            <span style={{ width: 20, height: 2, background: 'currentColor', borderRadius: 2, transition: 'transform .2s', transform: navOpen ? 'translateY(-6px) rotate(-45deg)' : 'none' }} />
+          </span>
+        </button>
+      </div>
+      {navOpen && (
+        <div className="mobile-menu">
+          {[...MAIN, ...MORE].map(([label, id]) => (
+            <a key={id} className={page === id ? 'active' : ''} onClick={() => goM(id)}>{label}</a>
+          ))}
+          <a href="tel:5613191272" style={{ color: 'var(--green-deep)', fontWeight: 700 }}>561-319-1272</a>
+          <a className="btn btn-lime" style={{ justifyContent: 'center', marginTop: 8 }} onClick={() => goM('contact')}>Book Assessment</a>
+        </div>
+      )}
+    </header>
+  );
+}
+
+function Footer({ go }) {
+  return (
+    <footer className="site"><div className="wrap">
+      <div className="cols">
+        <div style={{ flex: '1 1 300px', minWidth: 260 }}>
+          <img className="logo" src="./assets/logo-horizontal-white.png" alt="Urban Abundance" />
+          <p style={{ fontSize: 15, lineHeight: 1.6, maxWidth: 300, margin: '0 0 18px' }}>Concierge edible gardens for South Florida. You relax, we grow — one garden at a time.</p>
+          <div style={{ display: 'flex', gap: 10 }}>
+            {[['instagram', 'https://www.instagram.com/urbanabundancefl/'], ['facebook', 'https://www.facebook.com/urbanabundancefl/'], ['youtube', 'https://www.youtube.com/channel/UClcT_BCIgVRiX_DppyD4B0Q']].map(([s, href]) => (
+              <a key={s} href={href} target="_blank" rel="noreferrer" aria-label={s} style={{ width: 38, height: 38, borderRadius: '50%', background: 'rgba(255,255,255,0.1)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: 'var(--green-lime)' }}>
+                <window.Icon name={s} size={18} />
+              </a>
+            ))}
+          </div>
+        </div>
+        <div><h4>Explore</h4>{NAV.map(([l, id]) => <a key={id} onClick={() => go(id)}>{l}</a>)}</div>
+        <div><h4>Services</h4><a onClick={() => go('how')}>Garden design</a><a onClick={() => go('how')}>Installation</a><a onClick={() => go('how')}>Maintenance membership</a><a onClick={() => go('residential')}>Residential</a></div>
+        <div><h4>Visit</h4><a onClick={() => go('nursery')}>Our nursery at SmartyPlants</a><a href="https://maps.google.com/?q=1515+N+Dixie+Hwy+Lake+Worth+Beach+FL+33460" target="_blank" rel="noreferrer">1515 N. Dixie Hwy, Lake Worth Beach</a><a>Tues–Sat, 8:30–5pm</a><a href="tel:5613191272">561-319-1272</a><a href="mailto:info@urbanabundance.com">info@urbanabundance.com</a></div>
+      </div>
+      <div className="bottom">
+        <span>© Urban Abundance 2026 · Lake Worth Beach, FL</span>
+        <span>Privacy · Terms</span>
+      </div>
+    </div></footer>
+  );
+}
+
+// CTA band reused across pages
+function CTABand({ go }) {
+  return (
+    <section className="section band-dark"><div className="wrap" style={{ textAlign: 'center' }}>
+      <p className="eyebrow on-dark" style={{ textAlign: 'center' }}>Your garden is waiting</p>
+      <h2 className="display" style={{ fontSize: 60, margin: '0 auto 20px', maxWidth: 760 }}>Let's grow something <span className="hl">delicious.</span></h2>
+      <p className="lede" style={{ maxWidth: 540, margin: '0 auto 34px' }}>Book a free, no-pressure garden assessment. We'll walk your space and design your food future.</p>
+      <div style={{ display: 'flex', gap: 14, justifyContent: 'center' }}>
+        <a className="btn btn-lime lg" onClick={() => go('contact')}>Book a free assessment →</a>
+        <a className="btn btn-ghost-l lg" href="tel:5613191272">Call 561-319-1272</a>
+      </div>
+    </div></section>
+  );
+}
+
+function Reveal({ children, style }) {
+  const ref = React.useRef(null);
+  const [seen, setSeen] = React.useState(false);
+  React.useEffect(() => {
+    const el = ref.current; if (!el) return;
+    const io = new IntersectionObserver((e) => { if (e[0].isIntersecting) { setSeen(true); io.disconnect(); } }, { threshold: 0.12 });
+    io.observe(el); return () => io.disconnect();
+  }, []);
+  return <div ref={ref} style={{ opacity: seen ? 1 : 0, transform: seen ? 'none' : 'translateY(22px)', transition: 'opacity .7s var(--ease-grow), transform .7s var(--ease-grow)', ...style }}>{children}</div>;
+}
+
+Object.assign(window, { Ticker, Header, Footer, CTABand, Reveal, UA_NAV: NAV });
+
+})();
+
+// ===== Home =====
+(function(){
+// UA 2.0 — Home
+function Home({ go }) {
+  const { Reveal, CTABand, Icon, Stars } = window;
+  return (
+    <div>
+      {/* HERO */}
+      <section style={{ padding: '60px 0 44px' }}><div className="wrap">
+        <div className="ua-split" style={{ display: 'grid', gridTemplateColumns: '1.05fr .95fr', gap: 60, alignItems: 'center' }}>
+          <div>
+            <p className="eyebrow">Concierge edible gardens · South Florida</p>
+            <h1 className="display" style={{ fontSize: 90, marginBottom: 26 }}>You relax.<br />We <span className="hl">grow.</span></h1>
+            <p className="lede" style={{ maxWidth: 460, marginBottom: 32 }}>Your own GreenThumb designs, builds, and tends a thriving organic garden in your backyard. You just step outside and pick dinner.</p>
+            <div style={{ display: 'flex', gap: 14, alignItems: 'center', marginBottom: 30 }}>
+              <a className="btn btn-lime" onClick={() => go('contact')}>Book a free garden assessment →</a>
+              <a className="btn btn-ghost" onClick={() => go('how')}>See how it works</a>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 22, flexWrap: 'wrap' }}>
+              {[['sprout', 'Fully managed'], ['cycle', 'Year-round harvests'], ['leaf', '100% organic']].map(([ic, label], i, a) => (
+                <React.Fragment key={label}>
+                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: 9, fontFamily: 'var(--font-ui)', fontWeight: 700, fontSize: 14.5, color: 'var(--soil-900)' }}><Icon name={ic} size={18} style={{ color: 'var(--green-deep)' }} /> {label}</span>
+                  {i < a.length - 1 && <span style={{ width: 1, height: 18, background: 'var(--sand-200)' }} />}
+                </React.Fragment>
+              ))}
+            </div>
+          </div>
+          <div style={{ position: 'relative' }}>
+            <video src="./assets/video/home-hero.mp4" poster="./assets/photos/luxury-patio.jpg" autoPlay muted loop playsInline aria-label="Edible garden beside a South Florida pool" style={{ width: '100%', height: 560, objectFit: 'cover', borderRadius: '28px 28px 140px 28px', boxShadow: '0 30px 60px rgba(51,48,42,.18)', display: 'block' }} />
+            <div className="hero-rating" style={{ position: 'absolute', top: 26, left: -26, background: 'var(--paper)', borderRadius: 18, padding: '15px 20px', boxShadow: '0 16px 36px rgba(51,48,42,.16)' }}>
+              <Stars size={15} />
+              <div style={{ fontFamily: 'var(--font-ui)', fontWeight: 700, fontSize: 14, marginTop: 3 }}>4.9 · Loved locally</div>
+              <div style={{ fontFamily: 'var(--font-ui)', fontSize: 12, color: 'var(--taupe)' }}>150+ South Florida families</div>
+            </div>
+            <div className="pill-note hero-press" style={{ position: 'absolute', bottom: 30, left: -26 }}><Icon name="broadcast" size={16} style={{ color: 'var(--green-lime)' }} /> As seen on <b>WPBF&nbsp;25</b></div>
+          </div>
+        </div>
+      </div></section>
+
+      {/* PROOF STRIP */}
+      <section className="band-bone" style={{ borderTop: '1px solid var(--sand-200)', borderBottom: '1px solid var(--sand-200)' }}><div className="wrap" style={{ padding: '48px 40px' }}>
+        <p className="eyebrow" style={{ textAlign: 'center', marginBottom: 28 }}>Trusted across South Florida</p>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'stretch', gap: 0, flexWrap: 'wrap' }}>
+          {[['calendar', '12', 'Growing months a year'], ['sprout', '500+', 'Garden beds planted'], ['heart', '300+', 'Families growing']].map(([ic, v, l], i) => (
+            <React.Fragment key={l}>
+              {i > 0 && <span style={{ width: 1, background: 'var(--sand-200)', margin: '0 clamp(24px,5vw,64px)' }} />}
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 6, minWidth: 150 }}>
+                <span style={{ color: 'var(--green-deep)' }}><Icon name={ic} size={26} /></span>
+                <span className="display" style={{ fontSize: 60, lineHeight: 1, color: 'var(--green-deep)' }}>{v}</span>
+                <span style={{ fontFamily: 'var(--font-ui)', fontWeight: 600, fontSize: 14, letterSpacing: '.04em', textTransform: 'uppercase', color: 'var(--taupe)' }}>{l}</span>
+              </div>
+            </React.Fragment>
+          ))}
+        </div>
+      </div></section>
+
+      {/* START WITH YOUR SPACE — Vego-style guided path */}
+      <section className="section tight"><div className="wrap">
+        <div className="sec-head center" style={{ marginBottom: 40 }}>
+          <p className="eyebrow" style={{ textAlign: 'center' }}>Start with your space</p>
+          <h2 className="display">Where do you want to <span className="hl leaf">grow?</span></h2>
+          <p className="lede">Tell us your space and we'll design the right beds, crops, and care plan around it.</p>
+        </div>
+        <div className="grid-3">
+          {[
+            ['Backyard', 'Big dreams, bigger harvests. Full raised-bed gardens built for South Florida sun.', './assets/photos/customer-garden.jpg'],
+            ['Patio & poolside', 'Small space, big flavor. Elevated beds and planters that fit any footprint.', './assets/photos/poolside-beds.png'],
+            ['Restaurants & estates', 'Chef gardens and food forests, designed and tended at scale.', './assets/photos/waterfront-bed.png'],
+          ].map(([title, body, img]) => (
+            <Reveal key={title}><a className="card" style={{ cursor: 'pointer' }} onClick={() => go('contact')}>
+              <div className="ph"><img src={img} alt={title} /></div>
+              <div className="bd">
+                <h3>{title}</h3>
+                <p>{body}</p>
+                <span style={{ fontFamily: 'var(--font-ui)', fontWeight: 700, color: 'var(--green-deep)', marginTop: 4 }}>Design mine →</span>
+              </div>
+            </a></Reveal>
+          ))}
+        </div>
+      </div></section>
+
+      {/* 3-STEP */}
+      <section className="section"><div className="wrap">
+        <div className="sec-head center">
+          <p className="eyebrow" style={{ textAlign: 'center' }}>The all-in-one service</p>
+          <h2 className="display">Three steps to a garden that <span className="hl leaf">actually works.</span></h2>
+          <p className="lede">Most companies build beds and leave. We design it, build it, and stay — season after season.</p>
+        </div>
+        <div className="grid-3">
+          {[
+            ['01', 'design', 'Design & consultation', 'We assess your sunlight, soil, and space, then build a personalized seasonal planting plan around your goals — salads, herbs, fruit, and more.', './assets/photos/courtyard-beds.png'],
+            ['02', 'install', 'Turnkey installation', 'You don\u2019t lift a finger. Raised beds, soil prep, compost, and irrigation — planted and thriving from day one. Already have a garden? Ask about a Reboot.', './assets/photos/bed-in-a-day.jpg'],
+            ['03', 'maintain', 'Stewardship membership', 'Bi-weekly GreenThumb visits handle weeding, planting, pests, and seasonal transitions. You get the harvest and the reports — none of the work.', './assets/photos/customer-garden.jpg'],
+          ].map(([n, id, title, body, img]) => (
+            <Reveal key={id}><div className="card" style={{ cursor: 'pointer' }} onClick={() => go('how')}>
+              <div className="ph"><img src={img} alt={title} /></div>
+              <div className="bd">
+                <span className="stepno">{n}</span>
+                <h3>{title}</h3>
+                <p>{body}</p>
+              </div>
+            </div></Reveal>
+          ))}
+        </div>
+      </div></section>
+
+      {/* VEGO PARTNER — the beds we build with */}
+      <section className="section band-bone"><div className="wrap">
+        <div className="ua-split" style={{ display: 'grid', gridTemplateColumns: '.85fr 1.15fr', gap: 56, alignItems: 'center' }}>
+          <div>
+            <p className="eyebrow">Official Vego Garden partner</p>
+            <h2 className="display" style={{ fontSize: 46, marginBottom: 16 }}>The best beds in the business. <span className="hl leaf">Built into every install.</span></h2>
+            <p className="lede" style={{ marginBottom: 22 }}>We design, deliver, and plant Vego Garden's modular metal raised beds — rust-proof, food-safe, and built to last decades. Choose your finish; we handle the rest.</p>
+            <div style={{ marginBottom: 8, fontFamily: 'var(--font-ui)', fontWeight: 700, fontSize: 13, letterSpacing: '.06em', textTransform: 'uppercase', color: 'var(--taupe)' }}>Signature finishes</div>
+            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginBottom: 26 }}>
+              {[['Olive Green', '#6E7346'], ['British Green', '#2F4A38'], ['Terra Cotta', '#B15C38'], ['Modern Gray', '#8C8F91'], ['Pearl White', '#ECE8DF'], ['Sky Blue', '#A9C2CC'], ['Sunlit Oak', '#B4884E']].map(([name, hex]) => (
+                <div key={name} title={name} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, width: 62 }}>
+                  <span style={{ width: 34, height: 34, borderRadius: '50%', background: hex, border: '2px solid #fff', boxShadow: '0 2px 8px rgba(51,48,42,.18)' }}></span>
+                  <span style={{ fontSize: 10.5, color: 'var(--taupe)', textAlign: 'center', lineHeight: 1.15 }}>{name}</span>
+                </div>
+              ))}
+            </div>
+            <a className="btn btn-green" onClick={() => go('contact')}>Get these in your garden →</a>
+          </div>
+          <div className="grid-3">
+            {[
+              ['17" Modular Bed', '9-in-1 · classic', '179', '259', '7.7k', './assets/photos/bed-in-a-day.jpg'],
+              ['32" Extra-Tall Bed', '9-in-1 · no bending', '289', '419', '7.7k', './assets/photos/courtyard-beds.png'],
+              ['Elevated Bed 2×6', 'Patio · waist-high', '339', '379', '750', './assets/photos/poolside-beds.png'],
+            ].map(([name, sub, price, was, revs, img]) => (
+              <div key={name} className="card">
+                <div className="ph" style={{ position: 'relative' }}>
+                  <span style={{ position: 'absolute', top: 22, left: 22, background: 'var(--green-lime)', color: 'var(--soil-900)', fontFamily: 'var(--font-ui)', fontWeight: 700, fontSize: 12, padding: '4px 10px', borderRadius: 7, zIndex: 2 }}>Partner price</span>
+                  <img src={img} alt={name} style={{ height: 150 }} />
+                </div>
+                <div className="bd" style={{ padding: '18px 20px 22px', gap: 6 }}>
+                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}><Stars size={13} /><span style={{ color: 'var(--taupe)', fontFamily: 'var(--font-ui)', fontWeight: 600, fontSize: 12 }}>({revs})</span></span>
+                  <h3 style={{ fontSize: 19 }}>{name}</h3>
+                  <p style={{ fontSize: 13, color: 'var(--taupe)' }}>{sub}</p>
+                  <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, marginTop: 2 }}>
+                    <span className="display" style={{ fontSize: 24, color: 'var(--green-deep)' }}>${price}</span>
+                    <span style={{ fontSize: 14, color: 'var(--taupe)', textDecoration: 'line-through' }}>${was}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div></section>
+
+      {/* MEMBERSHIP TEASER */}
+      <section className="section band-mist"><div className="wrap">
+        <div className="ua-split" style={{ display: 'grid', gridTemplateColumns: '.95fr 1.05fr', gap: 60, alignItems: 'center' }}>
+          <div style={{ position: 'relative' }}>
+            <img src="./assets/photos/patio-garden.avif" alt="GreenThumb tending a garden" style={{ width: '100%', height: 480, objectFit: 'cover', borderRadius: '28px 140px 28px 28px', boxShadow: '0 24px 50px rgba(51,48,42,.16)' }} />
+          </div>
+          <div>
+            <p className="eyebrow">Like a pool service — for food</p>
+            <h2 className="display" style={{ fontSize: 50, marginBottom: 18 }}>A membership that keeps your garden thriving.</h2>
+            <p className="lede" style={{ marginBottom: 24 }}>The single biggest reason our clients succeed. A guaranteed bi-weekly schedule, seasonal replanting, and a GreenThumb on call — all covered by one simple monthly plan.</p>
+            <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 30px', display: 'flex', flexDirection: 'column', gap: 12 }}>
+              {['Bi-weekly expert visits — no gaps, no guessing', 'Seasonal transitions fully handled', 'Optional harvesting — we\u2019ll pick it for you', 'Detailed visit reports every time'].map(b => (
+                <li key={b} style={{ display: 'flex', gap: 11, fontSize: 16, color: 'var(--soil-700)', alignItems: 'flex-start' }}>
+                  <span style={{ color: 'var(--green-deep)', flex: 'none', marginTop: 2 }}><Icon name="check" size={18} /></span>{b}
+                </li>
+              ))}
+            </ul>
+            <a className="btn btn-green" onClick={() => go('residential')}>See membership &amp; pricing →</a>
+          </div>
+        </div>
+      </div></section>
+
+      {/* SEASONAL — WHAT'S GROWING NOW */}
+      <section className="section"><div className="wrap">
+        <div className="sec-head">
+          <p className="eyebrow">What's growing now · Winter 2026</p>
+          <h2 className="display">South Florida grows on its <span className="hl leaf">own calendar.</span></h2>
+          <p className="lede">We plant to our real seasons — not a national chart. Here's a taste of what's thriving in members' beds this month.</p>
+        </div>
+        <div className="chips" style={{ gap: 12 }}>
+          {[['leaf', 'Leaf lettuce'], ['fruit', 'Everglades tomatoes'], ['fruit', 'Peppers'], ['sprout', 'Brassicas'], ['herb', 'Cilantro & dill'], ['sprout', 'Snap peas'], ['carrot', 'Rainbow carrots'], ['flower', 'Edible flowers'], ['herb', 'Green onions'], ['fruit', 'Strawberries']].map(([ic, label]) => (
+            <span key={label} className="chip" style={{ fontSize: 15, padding: '10px 18px' }}><Icon name={ic} size={17} style={{ color: 'var(--green-deep)' }} /> {label}</span>
+          ))}
+        </div>
+      </div></section>
+
+      {/* VISIT — SmartyPlants nursery */}
+      <section className="section band-bone"><div className="wrap">
+        <div className="ua-split" style={{ display: 'grid', gridTemplateColumns: '1.05fr .95fr', gap: 56, alignItems: 'center' }}>
+          <div>
+            <p className="eyebrow">Now at SmartyPlants Nursery</p>
+            <h2 className="display" style={{ fontSize: 46, marginBottom: 16 }}>Come grow with us in <span className="hl leaf">Lake Worth.</span></h2>
+            <p className="lede" style={{ marginBottom: 22 }}>You'll find Urban Abundance at SmartyPlants Nursery. Stop by to pick out plants, herbs, and trees — or sit down with a GreenThumb to design the edible garden of your dreams.</p>
+            <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 26px', display: 'flex', flexDirection: 'column', gap: 12 }}>
+              {[['basket', 'Shop non-GMO, organic plants grown in our own nursery'], ['sprout', 'Meet a GreenThumb to plan and design your garden'], ['leaf', 'Get seasonal advice for your South Florida yard']].map(([ic, t]) => (
+                <li key={t} style={{ display: 'flex', gap: 11, alignItems: 'flex-start', fontSize: 16, color: 'var(--soil-700)' }}><span style={{ color: 'var(--green-deep)', flex: 'none', marginTop: 2 }}><Icon name={ic} size={20} /></span>{t}</li>
+              ))}
+            </ul>
+            <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center' }}>
+              <a className="btn btn-lime" href="https://maps.google.com/?q=1515+N+Dixie+Hwy+Lake+Worth+Beach+FL+33460" target="_blank" rel="noreferrer">Get directions →</a>
+              <a className="btn btn-ghost" onClick={() => go('nursery')}>About the nursery</a>
+            </div>
+            <p style={{ fontFamily: 'var(--font-ui)', fontWeight: 700, fontSize: 14.5, color: 'var(--soil-900)', margin: '22px 0 0' }}>1515 N. Dixie Hwy, Lake Worth Beach, FL 33460 <span style={{ color: 'var(--taupe)', fontWeight: 600 }}>· Tues–Sat, 8:30am–5pm</span></p>
+          </div>
+          <div style={{ position: 'relative' }}>
+            <img src="./assets/photos/courtyard-beds.png" alt="SmartyPlants Nursery in Lake Worth Beach" style={{ width: '100%', height: 480, objectFit: 'cover', borderRadius: '28px 28px 28px 140px', boxShadow: '0 24px 50px rgba(51,48,42,.16)' }} />
+          </div>
+        </div>
+      </div></section>
+
+      {/* IN THE PRESS */}
+      <section className="section band-dark"><div className="wrap">
+        <div className="ua-split" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 56, alignItems: 'center' }}>
+          <div style={{ padding: 0 }}><img src="./assets/blog/wpbf-feature.png" alt="Urban Abundance founder Ryan Boylston featured on WPBF 25 News" style={{ width: '100%', borderRadius: 18, boxShadow: '0 24px 50px rgba(0,0,0,.32)' }} /></div>
+          <div>
+            <p className="eyebrow on-dark">In the press</p>
+            <h2 className="display" style={{ fontSize: 44, marginBottom: 16 }}>“Your lettuce wasn’t put on a <span className="hl leaf">truck.”</span></h2>
+            <p className="lede" style={{ marginBottom: 26 }}>WPBF 25 News featured our founder Ryan Boylston on why more South Florida families are growing their own food — food that goes straight from the yard to the table.</p>
+            <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center' }}>
+              <a className="btn btn-lime" onClick={() => go('blog')}>Read the story →</a>
+              <span className="pill-note"><Icon name="broadcast" size={16} style={{ color: 'var(--green-lime)' }} /> As seen on WPBF 25</span>
+            </div>
+          </div>
+        </div>
+      </div></section>
+
+      {/* TESTIMONIALS */}
+      <section className="section band-bone"><div className="wrap">
+        <div className="sec-head center">
+          <p className="eyebrow" style={{ textAlign: 'center' }}>Loved by growers</p>
+          <h2 className="display">Neighbors who'll never buy grocery lettuce again.</h2>
+        </div>
+        <div className="grid-3">
+          {[
+            ['The kids beg to harvest dinner now. Our GreenThumb turned our empty side yard into the best part of our week.', 'Marisol R.', 'Delray Beach'],
+            ['I travel constantly and my garden has never looked better. It just... keeps producing. Worth every penny.', 'David K.', 'Boca Raton'],
+            ['We eat what we grow almost every night. It feels like having a private farmer. Truly the Four Seasons of gardening.', 'Priya & Sam', 'Jupiter'],
+          ].map(([quote, name, city]) => (
+            <div key={name} className="card"><div className="bd" style={{ gap: 16, padding: '30px 30px 32px' }}>
+              <Stars size={16} />
+              <p style={{ fontFamily: 'var(--display)', fontWeight: 500, fontSize: 21, lineHeight: 1.35, color: 'var(--soil-900)', letterSpacing: '-.01em' }}>"{quote}"</p>
+              <div style={{ marginTop: 'auto' }}>
+                <div style={{ fontFamily: 'var(--font-ui)', fontWeight: 700, fontSize: 15 }}>{name}</div>
+                <div style={{ fontSize: 13, color: 'var(--taupe)' }}>{city}, FL</div>
+              </div>
+            </div></div>
+          ))}
+        </div>
+      </div></section>
+
+      <CTABand go={go} />
+    </div>
+  );
+}
+window.Home = Home;
+
+})();
+
+// ===== HowItWorks =====
+(function(){
+// UA 2.0 — How It Works
+function HowItWorks({ go }) {
+  const { Reveal, CTABand, Icon } = window;
+  const phases = [
+    {
+      n: '01', tag: 'Plan', title: 'Garden planning & design consultation',
+      lead: 'Every great harvest starts with a plan.',
+      quote: 'We don\u2019t just put beds in the ground. We create a vision for your food future.',
+      img: './assets/photos/courtyard-beds.png',
+      points: ['We assess your site — sunlight, soil, water flow, and space', 'A personalized seasonal planting plan built around your goals', 'Companion planting + natural pest-deterrent strategy', 'Custom layout optimized for beauty, yield, and access'],
+    },
+    {
+      n: '02', tag: 'Build', title: 'Turnkey installation or garden reboot',
+      lead: 'You don\u2019t lift a finger — we handle everything.',
+      quote: 'A thriving garden from day one — even if we\u2019re rebuilding what you already have.',
+      img: './assets/photos/bed-in-a-day.jpg',
+      points: ['Full-service raised beds, soil prep, compost & irrigation', 'Already have a garden? A lower-cost Reboot brings it back to life', 'Soil-health protocol for long-term fertility & water efficiency', 'First round of planting included — no waiting to grow'],
+    },
+    {
+      n: '03', tag: 'Thrive', title: 'Ongoing garden stewardship membership',
+      lead: 'The single biggest reason our clients succeed.',
+      quote: 'Think of us like a pool or lawn service — but for your food garden.',
+      img: './assets/photos/customer-garden.jpg',
+      points: ['Bi-weekly visits: weeding, pruning, planting, fertilizing, pest control', 'A guaranteed service schedule — no guessing, no gaps', 'Seasonal transitions fully handled, all year', 'Optional harvesting + detailed visit reports every time'],
+    },
+  ];
+  return (
+    <div>
+      {/* HERO */}
+      <section className="band-mist" style={{ padding: '80px 0' }}><div className="narrow" style={{ textAlign: 'center' }}>
+        <p className="eyebrow" style={{ textAlign: 'center' }}>How it works</p>
+        <h1 className="display" style={{ fontSize: 74, marginBottom: 20 }}>The only <span className="hl">full-service</span> edible garden company in South Florida.</h1>
+        <p className="lede" style={{ maxWidth: 560, margin: '0 auto' }}>Design, installation, and bi-weekly care — one team, one plan, from empty yard to overflowing harvest.</p>
+      </div></section>
+
+      {/* PHASES */}
+      <section className="section"><div className="wrap" style={{ display: 'flex', flexDirection: 'column', gap: 88 }}>
+        {phases.map((p, i) => (
+          <Reveal key={p.n}><div className="ua-split" style={{ display: 'grid', gridTemplateColumns: i % 2 ? '1fr 1fr' : '1fr 1fr', gap: 60, alignItems: 'center' }}>
+            <div style={{ order: i % 2 ? 2 : 1, position: 'relative' }}>
+              <img src={p.img} alt={p.title} style={{ width: '100%', height: 460, objectFit: 'cover', borderRadius: i % 2 ? '28px 28px 28px 140px' : '28px 28px 140px 28px', boxShadow: '0 24px 50px rgba(51,48,42,.16)' }} />
+            </div>
+            <div style={{ order: i % 2 ? 1 : 2 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 16 }}>
+                <span className="stepno">{p.n}</span>
+                <span className="eyebrow" style={{ margin: 0 }}>{p.tag}</span>
+              </div>
+              <h2 className="display" style={{ fontSize: 42, marginBottom: 12 }}>{p.title}</h2>
+              <p style={{ fontFamily: 'var(--display)', fontWeight: 500, fontSize: 22, color: 'var(--green-deep)', margin: '0 0 20px' }}>{p.lead}</p>
+              <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 22px', display: 'flex', flexDirection: 'column', gap: 12 }}>
+                {p.points.map(pt => (
+                  <li key={pt} style={{ display: 'flex', gap: 11, fontSize: 16, color: 'var(--soil-700)', lineHeight: 1.5 }}>
+                    <span style={{ color: 'var(--green-deep)', flex: 'none', marginTop: 2 }}><Icon name="check" size={18} /></span>{pt}
+                  </li>
+                ))}
+              </ul>
+              <p style={{ borderLeft: '3px solid var(--green-lime)', paddingLeft: 16, fontStyle: 'italic', fontFamily: 'var(--font-body)', fontSize: 16, color: 'var(--soil-700)', margin: 0 }}>{p.quote}</p>
+            </div>
+          </div></Reveal>
+        ))}
+      </div></section>
+
+      {/* BONUSES */}
+      <section className="section band-bone"><div className="wrap">
+        <div className="sec-head center">
+          <p className="eyebrow" style={{ textAlign: 'center' }}>Only from Urban Abundance</p>
+          <h2 className="display">Every member gets the <span className="hl leaf">extras.</span></h2>
+        </div>
+        <div className="grid-3">
+          {[
+            ['chat', 'Direct access to our team', 'Season-long Q&A by text or email, plus guides and seasonal tips you won\u2019t find online. Be as hands-on or hands-off as you like.'],
+            ['phone', 'Follow-up call with Farmer Jack', 'A 20-minute strategy session within 30 days of install to review your goals and set you up for long-term success.'],
+            ['gift', 'Client welcome pack', 'An Urban Abundance tee, a signature grower\u2019s hat, and a Garden Proud sticker. You\u2019re part of a movement to grow what matters.'],
+          ].map(([icon, title, body]) => (
+            <div key={title} className="card"><div className="bd" style={{ padding: '30px 30px 32px', gap: 12 }}>
+              <span style={{ color: 'var(--green-deep)' }}><Icon name={icon} size={30} /></span>
+              <h3>{title}</h3>
+              <p>{body}</p>
+            </div></div>
+          ))}
+        </div>
+      </div></section>
+
+      {/* WHY IT WORKS — timeline */}
+      <section className="section band-dark"><div className="wrap">
+        <div style={{ maxWidth: 720, marginBottom: 56 }}>
+          <p className="eyebrow on-dark">Why it works</p>
+          <h2 className="display" style={{ fontSize: 46, marginBottom: 14 }}>Most companies build your beds and leave. <span className="hl leaf">We stay.</span></h2>
+          <p className="lede">Anyone can drop a bed in the ground. Our whole model is built around what happens after — season after season.</p>
+        </div>
+        <div style={{ position: 'relative' }}>
+          <div className="tl-line" style={{ position: 'absolute', top: 34, left: '10%', right: '10%', height: 2, background: 'rgba(255,255,255,.16)' }} />
+          <div className="ua-split" style={{ display: 'grid', gridTemplateColumns: 'repeat(5,1fr)', gap: 18, position: 'relative' }}>
+            {[
+              ['ruler', 'Design', 'We plan around your goals'],
+              ['basket', 'Installation', 'Beds, soil & first planting'],
+              ['cycle', 'Bi-weekly care', 'We tend it every visit'],
+              ['chat', 'Personal support', 'A GreenThumb on call'],
+              ['leaf', 'Thriving garden', 'Harvests, season after season'],
+            ].map(([ic, title, cap], i, a) => {
+              const last = i === a.length - 1;
+              return (
+                <div key={title} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 12 }}>
+                  <div style={{ width: 68, height: 68, borderRadius: '50%', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', background: last ? 'var(--green-lime)' : 'rgba(255,255,255,.06)', border: `2px solid ${last ? 'var(--green-lime)' : 'rgba(255,255,255,.18)'}`, color: last ? 'var(--soil-900)' : 'var(--green-lime)' }}><Icon name={ic} size={30} /></div>
+                  <div>
+                    <div style={{ fontFamily: 'var(--font-ui)', fontWeight: 700, fontSize: 11, letterSpacing: '.16em', textTransform: 'uppercase', color: 'rgba(252,251,246,.5)', marginBottom: 5 }}>{`0${i + 1}`}</div>
+                    <div style={{ fontFamily: 'var(--display)', fontWeight: 600, fontSize: 21, color: '#fff', marginBottom: 4 }}>{title}</div>
+                    <div style={{ fontFamily: 'var(--font-body)', fontSize: 14, lineHeight: 1.45, color: 'rgba(252,251,246,.66)', maxWidth: 170, margin: '0 auto' }}>{cap}</div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+          <div className="ua-split" style={{ display: 'grid', gridTemplateColumns: '2fr 3fr', gap: 18, marginTop: 30 }}>
+            <div style={{ borderTop: '2px solid rgba(255,255,255,.22)', paddingTop: 12, textAlign: 'center', fontFamily: 'var(--font-ui)', fontWeight: 700, fontSize: 12, letterSpacing: '.14em', textTransform: 'uppercase', color: 'rgba(252,251,246,.55)' }}>Where most companies stop</div>
+            <div style={{ borderTop: '2px solid var(--green-lime)', paddingTop: 12, textAlign: 'center', fontFamily: 'var(--font-ui)', fontWeight: 700, fontSize: 12, letterSpacing: '.14em', textTransform: 'uppercase', color: 'var(--green-lime)' }}>Where Urban Abundance keeps going</div>
+          </div>
+        </div>
+      </div></section>
+
+      <CTABand go={go} />
+    </div>
+  );
+}
+window.HowItWorks = HowItWorks;
+
+})();
+
+// ===== Residential =====
+(function(){
+// UA 2.0 — Residential
+function Residential({ go }) {
+  const { Reveal, CTABand, Icon } = window;
+  const tiers = [
+    { name: 'Kitchen Garden', pitch: 'Perfect for first-time growers', price: '159', beds: '1 garden bed', feat: ['Design & consultation', 'Turnkey install + first planting', 'Bi-weekly GreenThumb visits', 'Seasonal replanting', 'Text & email support'], accent: false },
+    { name: 'Family Harvest', pitch: 'Our most popular plan', price: '299', beds: '3 garden beds', feat: ['Everything in Kitchen Garden', 'Larger seasonal crop plan', 'Optional harvesting service', 'Follow-up call with Farmer Jack', 'Priority scheduling'], accent: true },
+    { name: 'Estate', pitch: 'For chefs & entertainers', price: 'Custom', beds: '4+ beds / food forest', feat: ['Everything in Family Harvest', 'Orchard & pollinator design', 'Weekly visits available', 'Dedicated account GreenThumb', 'Event & harvest coordination'], accent: false },
+  ];
+  return (
+    <div>
+      {/* HERO */}
+      <section style={{ padding: '60px 0 44px' }}><div className="wrap">
+        <div className="ua-split" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 60, alignItems: 'center' }}>
+          <div>
+            <p className="eyebrow">Residential gardens</p>
+            <h1 className="display" style={{ fontSize: 78, marginBottom: 22 }}>Your backyard,<br /><span className="hl">quietly abundant.</span></h1>
+            <p className="lede" style={{ maxWidth: 460, marginBottom: 30 }}>For homeowners who want the joy of fresh, homegrown food — without the labor, stress, or failed experiments. A garden that works, and stays working.</p>
+            <div style={{ display: 'flex', gap: 14 }}>
+              <a className="btn btn-lime" onClick={() => go('contact')}>Book a free assessment →</a>
+              <a className="btn btn-ghost" onClick={() => go('how')}>How it works</a>
+            </div>
+          </div>
+          <div style={{ position: 'relative' }}>
+            <img src="./assets/photos/poolside-beds.png" alt="Residential edible garden" style={{ width: '100%', height: 500, objectFit: 'cover', borderRadius: '28px 28px 28px 140px', boxShadow: '0 30px 60px rgba(51,48,42,.18)' }} />
+          </div>
+        </div>
+      </div></section>
+
+      {/* WHO IT'S FOR */}
+      <section className="section tight band-bone"><div className="wrap">
+        <div className="sec-head center" style={{ marginBottom: 40 }}>
+          <p className="eyebrow" style={{ textAlign: 'center' }}>Who it's for</p>
+          <h2 className="display">If any of this sounds familiar, you're home.</h2>
+        </div>
+        <div className="grid-3">
+          {[
+            ['basket', '"I want fresh food"', 'You love the idea of picking dinner from your own yard — you just don\u2019t know where to start.'],
+            ['clock', '"I don\u2019t have time"', 'Between work and family, keeping a garden alive feels like one more job. We make it effortless.'],
+            ['sprout', '"I kill every plant"', 'Past attempts fizzled. With a GreenThumb on your team, your garden finally thrives.'],
+          ].map(([icon, title, body]) => (
+            <div key={title} className="card"><div className="bd" style={{ padding: '28px 28px 30px', gap: 10 }}>
+              <span style={{ color: 'var(--green-deep)' }}><Icon name={icon} size={30} /></span>
+              <h3 style={{ fontSize: 23 }}>{title}</h3>
+              <p>{body}</p>
+            </div></div>
+          ))}
+        </div>
+      </div></section>
+
+      {/* WHAT'S INCLUDED */}
+      <section className="section"><div className="wrap">
+        <div className="ua-split" style={{ display: 'grid', gridTemplateColumns: '.95fr 1.05fr', gap: 60, alignItems: 'center' }}>
+          <img src="./assets/photos/waterfront-bed.png" alt="Waterfront raised beds" style={{ width: '100%', height: 480, objectFit: 'cover', borderRadius: '140px 28px 28px 28px', boxShadow: '0 24px 50px rgba(51,48,42,.16)' }} />
+          <div>
+            <p className="eyebrow">All-in-one</p>
+            <h2 className="display" style={{ fontSize: 46, marginBottom: 20 }}>Everything to grow. Nothing to manage.</h2>
+            <div className="grid-2" style={{ gap: 16 }}>
+              {['Custom design', 'Raised beds & soil', 'Drip irrigation', 'First planting', 'Bi-weekly care', 'Seasonal replanting', 'Pest management', 'Visit reports'].map(f => (
+                <div key={f} style={{ display: 'flex', gap: 10, alignItems: 'center', fontSize: 16, color: 'var(--soil-700)', fontWeight: 600 }}>
+                  <span style={{ width: 26, height: 26, borderRadius: '50%', background: 'var(--green-mist)', color: 'var(--green-deep)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', flex: 'none' }}><Icon name="check" size={15} /></span>{f}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div></section>
+
+      {/* PRICING */}
+      <section className="section band-mist"><div className="wrap">
+        <div className="sec-head center">
+          <p className="eyebrow" style={{ textAlign: 'center' }}>Membership plans</p>
+          <h2 className="display">One simple monthly plan. <span className="hl leaf">Everything included.</span></h2>
+          <p className="lede">Transparent pricing based on garden size &amp; site complexity. Save with annual pre-pay.</p>
+        </div>
+        <div className="grid-3" style={{ alignItems: 'stretch' }}>
+          {tiers.map(t => (
+            <div key={t.name} className="card" style={{ border: t.accent ? '2px solid var(--green-deep)' : '1px solid var(--sand-200)', boxShadow: t.accent ? '0 24px 50px rgba(38,79,32,.16)' : '0 10px 30px rgba(51,48,42,.07)', position: 'relative', transform: t.accent ? 'translateY(-8px)' : 'none' }}>
+              {t.accent && <span style={{ position: 'absolute', top: 18, right: 18, background: 'var(--green-lime)', color: 'var(--soil-900)', fontFamily: 'var(--font-ui)', fontWeight: 700, fontSize: 12, padding: '5px 12px', borderRadius: 7 }}>Most popular</span>}
+              <div className="bd" style={{ padding: '32px 30px 34px', gap: 8 }}>
+                <h3 style={{ fontSize: 24 }}>{t.name}</h3>
+                <p style={{ color: 'var(--taupe)', fontWeight: 600 }}>{t.pitch}</p>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: 6, margin: '10px 0 2px' }}>
+                  <span className="display" style={{ fontSize: 46, color: 'var(--green-deep)' }}>{t.price === 'Custom' ? 'Custom' : '$' + t.price}</span>
+                  {t.price !== 'Custom' && <span style={{ color: 'var(--taupe)', fontWeight: 600 }}>/mo</span>}
+                </div>
+                <p style={{ fontFamily: 'var(--font-ui)', fontWeight: 700, fontSize: 14, color: 'var(--soil-900)', margin: '0 0 8px' }}>{t.beds}</p>
+                <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 22px', display: 'flex', flexDirection: 'column', gap: 10 }}>
+                  {t.feat.map(f => (
+                    <li key={f} style={{ display: 'flex', gap: 9, fontSize: 14.5, color: 'var(--soil-700)' }}>
+                      <span style={{ color: 'var(--green-deep)', flex: 'none', marginTop: 1 }}><Icon name="check" size={16} /></span>{f}
+                    </li>
+                  ))}
+                </ul>
+                <a className={t.accent ? 'btn btn-green' : 'btn btn-ghost'} style={{ marginTop: 'auto', justifyContent: 'center' }} onClick={() => go('contact')}>{t.price === 'Custom' ? 'Request a quote' : 'Get started'}</a>
+              </div>
+            </div>
+          ))}
+        </div>
+        <p style={{ textAlign: 'center', color: 'var(--taupe)', fontSize: 14, marginTop: 26 }}>Install &amp; design quoted separately after your free assessment · Reboot pricing available for existing gardens</p>
+      </div></section>
+
+      <CTABand go={go} />
+    </div>
+  );
+}
+window.Residential = Residential;
+
+})();
+
+// ===== Commercial =====
+(function(){
+// UA 2.0 — Commercial
+function Commercial({ go }) {
+  const { Reveal, CTABand, Icon } = window;
+  const partners = [
+    { name: 'Restaurant Garden', pitch: 'Farm-to-table, steps from the kitchen', price: 'Custom', beds: 'On-site chef beds', feat: ['Menu-driven crop planning', 'Commercial-grade raised beds', 'Weekly GreenThumb service', 'Seasonal chef consultations', 'Harvest delivered to the pass'], accent: false },
+    { name: 'Community & Wellness', pitch: 'For community centers & care facilities', price: 'Custom', beds: 'Accessible bed layouts', feat: ['ADA-accessible, raised designs', 'Therapeutic planting programs', 'Resident & staff education', 'Full bi-weekly maintenance', 'Seasonal events & harvests'], accent: true },
+    { name: 'Enterprise / Multi-site', pitch: 'HOAs, developers & new construction', price: 'Let\u2019s talk', beds: 'Portfolio-wide', feat: ['Multi-property design standards', 'Dedicated account GreenThumb', 'Consolidated reporting', 'Amenity & marketing support', 'Priority regional scheduling'], accent: false },
+  ];
+  return (
+    <div>
+      {/* HERO */}
+      <section style={{ padding: '60px 0 44px' }}><div className="wrap">
+        <div className="ua-split" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 60, alignItems: 'center' }}>
+          <div>
+            <p className="eyebrow">Commercial gardens</p>
+            <h1 className="display" style={{ fontSize: 74, marginBottom: 22 }}>Farm-to-table,<br /><span className="hl">built right in.</span></h1>
+            <p className="lede" style={{ maxWidth: 460, marginBottom: 30 }}>From restaurants to wellness campuses, we design, install, and maintain productive edible gardens at any scale — so your team harvests fresh, and never lifts a shovel.</p>
+            <div style={{ display: 'flex', gap: 14 }}>
+              <a className="btn btn-lime" onClick={() => go('contact')}>Book a free consultation →</a>
+              <a className="btn btn-ghost" onClick={() => go('how')}>How it works</a>
+            </div>
+          </div>
+          <div style={{ position: 'relative' }}>
+            <img src="./assets/photos/waterfront-bed.png" alt="Commercial edible garden installation" style={{ width: '100%', height: 500, objectFit: 'cover', borderRadius: '28px 28px 28px 140px', boxShadow: '0 30px 60px rgba(51,48,42,.18)' }} />
+          </div>
+        </div>
+      </div></section>
+
+      {/* SEGMENTS */}
+      <section className="section tight band-bone"><div className="wrap">
+        <div className="sec-head center" style={{ marginBottom: 40 }}>
+          <p className="eyebrow" style={{ textAlign: 'center' }}>Who we grow for</p>
+          <h2 className="display">Edible spaces for every kind of table.</h2>
+        </div>
+        <div className="grid-2" style={{ gap: 26 }}>
+          {[
+            ['basket', 'Restaurants', 'Farm-to-table has never been so easy. Chef-driven beds that put the freshest ingredients steps from your kitchen.'],
+            ['heart', 'Community gardens', 'Edible spaces for community centers — grown to gather, share, and thrive together.'],
+            ['sun', 'Assisted living', 'Therapeutic, accessible gardens that nourish body and spirit, designed for every ability.'],
+            ['leaf', 'Treatment centers', 'Healing spaces that grow wellness and connection as part of the recovery journey.'],
+          ].map(([icon, title, body]) => (
+            <Reveal key={title}><div className="card" style={{ flexDirection: 'row' }}>
+              <div className="bd" style={{ padding: '28px 30px', gap: 10 }}>
+                <span style={{ color: 'var(--green-deep)' }}><Icon name={icon} size={30} /></span>
+                <h3>{title}</h3>
+                <p>{body}</p>
+              </div>
+            </div></Reveal>
+          ))}
+        </div>
+      </div></section>
+
+      {/* WHAT'S INCLUDED */}
+      <section className="section"><div className="wrap">
+        <div className="ua-split" style={{ display: 'grid', gridTemplateColumns: '.95fr 1.05fr', gap: 60, alignItems: 'center' }}>
+          <img src="./assets/photos/courtyard-beds.png" alt="Commercial courtyard beds" style={{ width: '100%', height: 480, objectFit: 'cover', borderRadius: '140px 28px 28px 28px', boxShadow: '0 24px 50px rgba(51,48,42,.16)' }} />
+          <div>
+            <p className="eyebrow">Fully managed</p>
+            <h2 className="display" style={{ fontSize: 46, marginBottom: 20 }}>A turnkey program your team never has to think about.</h2>
+            <div className="grid-2" style={{ gap: 16 }}>
+              {['Site & menu-driven design', 'Commercial-grade beds', 'Automated irrigation', 'Crop & rotation planning', 'Weekly GreenThumb care', 'Staff & resident education', 'Harvest coordination', 'Seasonal reporting'].map(f => (
+                <div key={f} style={{ display: 'flex', gap: 10, alignItems: 'center', fontSize: 16, color: 'var(--soil-700)', fontWeight: 600 }}>
+                  <span style={{ width: 26, height: 26, borderRadius: '50%', background: 'var(--green-mist)', color: 'var(--green-deep)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', flex: 'none' }}><Icon name="check" size={15} /></span>{f}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div></section>
+
+      {/* PARTNER OPTIONS */}
+      <section className="section band-mist"><div className="wrap">
+        <div className="sec-head center">
+          <p className="eyebrow" style={{ textAlign: 'center' }}>How we partner</p>
+          <h2 className="display">Programs scaled to <span className="hl leaf">your operation.</span></h2>
+          <p className="lede">Every commercial engagement is quoted to your space, goals, and service cadence. Here's where most partners start.</p>
+        </div>
+        <div className="grid-3" style={{ alignItems: 'stretch' }}>
+          {partners.map(t => (
+            <div key={t.name} className="card" style={{ border: t.accent ? '2px solid var(--green-deep)' : '1px solid var(--sand-200)', boxShadow: t.accent ? '0 24px 50px rgba(38,79,32,.16)' : '0 10px 30px rgba(51,48,42,.07)', position: 'relative', transform: t.accent ? 'translateY(-8px)' : 'none' }}>
+              {t.accent && <span style={{ position: 'absolute', top: 18, right: 18, background: 'var(--green-lime)', color: 'var(--soil-900)', fontFamily: 'var(--font-ui)', fontWeight: 700, fontSize: 12, padding: '5px 12px', borderRadius: 7 }}>Most common</span>}
+              <div className="bd" style={{ padding: '32px 30px 34px', gap: 8 }}>
+                <h3 style={{ fontSize: 24 }}>{t.name}</h3>
+                <p style={{ color: 'var(--taupe)', fontWeight: 600 }}>{t.pitch}</p>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: 6, margin: '10px 0 2px' }}>
+                  <span className="display" style={{ fontSize: 40, color: 'var(--green-deep)' }}>{t.price}</span>
+                </div>
+                <p style={{ fontFamily: 'var(--font-ui)', fontWeight: 700, fontSize: 14, color: 'var(--soil-900)', margin: '0 0 8px' }}>{t.beds}</p>
+                <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 22px', display: 'flex', flexDirection: 'column', gap: 10 }}>
+                  {t.feat.map(f => (
+                    <li key={f} style={{ display: 'flex', gap: 9, fontSize: 14.5, color: 'var(--soil-700)' }}>
+                      <span style={{ color: 'var(--green-deep)', flex: 'none', marginTop: 1 }}><Icon name="check" size={16} /></span>{f}
+                    </li>
+                  ))}
+                </ul>
+                <a className={t.accent ? 'btn btn-green' : 'btn btn-ghost'} style={{ marginTop: 'auto', justifyContent: 'center' }} onClick={() => go('contact')}>Request a quote</a>
+              </div>
+            </div>
+          ))}
+        </div>
+        <p style={{ textAlign: 'center', color: 'var(--taupe)', fontSize: 14, marginTop: 26 }}>Design &amp; installation quoted after a free on-site consultation · Volume &amp; multi-site pricing available</p>
+      </div></section>
+
+      <CTABand go={go} />
+    </div>
+  );
+}
+window.Commercial = Commercial;
+
+})();
+
+// ===== About =====
+(function(){
+// UA 2.0 — About / Our Story
+function About({ go }) {
+  const { Reveal, CTABand, Icon } = window;
+  return (
+    <div>
+      {/* HERO */}
+      <section className="band-dark" style={{ padding: '86px 0' }}><div className="narrow" style={{ textAlign: 'center' }}>
+        <p className="eyebrow on-dark" style={{ textAlign: 'center' }}>Our story</p>
+        <h1 className="display" style={{ fontSize: 78, marginBottom: 20 }}>Everyone grows food.</h1>
+        <p className="lede" style={{ maxWidth: 560, margin: '0 auto' }}>Not someday. Not only gardeners. Everyone. That's the future we're planting across South Florida — one backyard at a time.</p>
+      </div></section>
+
+      {/* MISSION SPLIT */}
+      <section className="section"><div className="wrap">
+        <div className="ua-split" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 60, alignItems: 'center' }}>
+          <img src="./assets/photos/customer-garden.jpg" alt="A flourishing customer garden" style={{ width: '100%', height: 500, objectFit: 'cover', borderRadius: '28px 28px 140px 28px', boxShadow: '0 24px 50px rgba(51,48,42,.16)' }} />
+          <div>
+            <p className="eyebrow">Why we exist</p>
+            <h2 className="display" style={{ fontSize: 46, marginBottom: 18 }}>Growing food shouldn't be hard. It should be <span className="hl leaf">beautiful.</span></h2>
+            <p className="lede" style={{ marginBottom: 16 }}>We believe food is one of the greatest connectors — between people, health, family, and nature. So we removed everything that makes gardening intimidating and kept only the joy.</p>
+            <p style={{ fontSize: 16, lineHeight: 1.65, color: 'var(--soil-700)', margin: 0 }}>Our mission is simple: empower people to live healthier, more sustainable lives — cultivating stronger communities and a greener world, one garden at a time.</p>
+          </div>
+        </div>
+      </div></section>
+
+      {/* FARMER JACK */}
+      <section className="section band-bone"><div className="wrap">
+        <div className="ua-split" style={{ display: 'grid', gridTemplateColumns: '.9fr 1.1fr', gap: 60, alignItems: 'center' }}>
+          <div style={{ position: 'relative' }}>
+            <img src="./assets/photos/bed-in-a-day.jpg" alt="Farmer Jack installing a garden" style={{ width: '100%', height: 480, objectFit: 'cover', borderRadius: '140px 28px 28px 28px', boxShadow: '0 24px 50px rgba(51,48,42,.16)' }} />
+            <div style={{ position: 'absolute', bottom: -20, right: 20, background: 'var(--green-deep)', color: '#fff', borderRadius: 18, padding: '16px 22px', fontFamily: 'var(--display)', fontWeight: 600, fontSize: 20, boxShadow: '0 16px 36px rgba(38,79,32,.3)' }}>
+              Farmer Jack<br /><span style={{ fontFamily: 'var(--font-ui)', fontWeight: 600, fontSize: 12, letterSpacing: '.14em', textTransform: 'uppercase', color: 'var(--green-lime)' }}>Founder</span>
+            </div>
+          </div>
+          <div>
+            <p className="eyebrow">Meet the founder</p>
+            <h2 className="display" style={{ fontSize: 44, marginBottom: 18 }}>Started with one bed. Grew into a movement.</h2>
+            <p style={{ fontSize: 16.5, lineHeight: 1.7, color: 'var(--soil-700)', marginBottom: 16 }}>Urban Abundance began with a simple frustration: gardening advice was everywhere, but thriving gardens were rare. Jack set out to build the one thing South Florida didn't have — a true full-service edible garden company that designs, builds, and <em>stays</em>.</p>
+            <p style={{ fontSize: 16.5, lineHeight: 1.7, color: 'var(--soil-700)', margin: 0 }}>Today, a team of six certified GreenThumbs tends hundreds of gardens from Boca to Jupiter. Every member still gets Jack's personal follow-up call — because you're not just a client, you're part of the movement.</p>
+          </div>
+        </div>
+      </div></section>
+
+      {/* VALUES */}
+      <section className="section"><div className="wrap">
+        <div className="sec-head center">
+          <p className="eyebrow" style={{ textAlign: 'center' }}>What we believe</p>
+          <h2 className="display">The roots of everything we do.</h2>
+        </div>
+        <div className="grid-3">
+          {[
+            ['cycle', 'Regenerative by default', 'Living soil, companion planting, and pollinators — gardens that give back more than they take.'],
+            ['heart', 'We stay with you', 'Anyone can build a bed. We measure success in seasons, not installs.'],
+            ['pin', 'Rooted in South Florida', 'We plant to our real local calendar — never a national chart that fails in our heat.'],
+            ['basket', 'Abundance is shared', 'Overflowing beds mean food for neighbors, friends, and community tables.'],
+            ['book', 'Teach, don\u2019t gatekeep', 'Members get our real knowledge — be as hands-on or hands-off as you like.'],
+            ['spark', 'Quietly premium', 'Great design disappears. We sweat the details so your garden just feels effortless.'],
+          ].map(([icon, title, body]) => (
+            <div key={title} className="card"><div className="bd" style={{ padding: '26px 28px 28px', gap: 8 }}>
+              <span style={{ color: 'var(--green-deep)' }}><Icon name={icon} size={28} /></span>
+              <h3 style={{ fontSize: 22 }}>{title}</h3>
+              <p>{body}</p>
+            </div></div>
+          ))}
+        </div>
+      </div></section>
+
+      {/* PRESS / STATS */}
+      <section className="section band-mist"><div className="wrap" style={{ textAlign: 'center' }}>
+        <p className="eyebrow" style={{ textAlign: 'center' }}>The movement in numbers</p>
+        <h2 className="display" style={{ fontSize: 46, marginBottom: 44 }}>Growing across South Florida.</h2>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: 56, flexWrap: 'wrap' }}>
+          {[['500+', 'Garden beds planted'], ['150+', 'Families growing'], ['20+', 'Community gardens'], ['6', 'Certified GreenThumbs']].map(([v, l]) => (
+            <div key={l}>
+              <div className="display" style={{ fontSize: 60, color: 'var(--green-deep)' }}>{v}</div>
+              <div style={{ fontFamily: 'var(--font-ui)', fontWeight: 600, fontSize: 14, color: 'var(--soil-700)', textTransform: 'uppercase', letterSpacing: '.06em', marginTop: 4 }}>{l}</div>
+            </div>
+          ))}
+        </div>
+        <div className="pill-note" style={{ marginTop: 44 }}><Icon name="broadcast" size={16} style={{ color: 'var(--green-lime)' }} /> As seen on <b>WPBF&nbsp;25 News</b></div>
+      </div></section>
+
+      <CTABand go={go} />
+    </div>
+  );
+}
+window.About = About;
+
+})();
+
+// ===== Blog =====
+(function(){
+// UA 2.0 — Blog / Journal (real posts + images from urbanabundance.com)
+const POSTS = [
+  { title: 'We’re on WPBF 25 News: Your Lettuce Wasn’t Put on a Truck', date: 'Jul 22, 2026', tag: 'Press', cats: ['Press', 'Company', 'Featured', 'Edible Gardening', 'Vegetables'], img: './assets/blog/wpbf-feature.png', url: '#', excerpt: 'WPBF 25 News featured our founder Ryan Boylston on why more South Florida families are growing their own food as a cyclospora outbreak spreads.', body: ['When a cyclospora outbreak linked to about 7,000 cases nationwide put store-bought lettuce in the headlines, WPBF 25 News came looking for answers — and found us.', 'Reporter Ari Hait sat down with our founder, Ryan Boylston, to talk about why so many South Florida families are suddenly trading the grocery aisle for their own backyard.', { h: '“Your lettuce wasn’t put on a truck”' }, 'That line says it all. Food from your own garden didn’t ride across the country in a refrigerated truck or sit in a warehouse. It goes from your yard straight to your table.', '“Your lettuce out of your garden wasn’t put on a truck, wasn’t put in a refrigerator, wasn’t moved across the country or across the world,” Ryan told WPBF.', { h: 'The whole garden, handled for you' }, 'Our model is simple, and it’s the same one we’ve run for three years: we meet with homeowners, design a garden specific to their yard, install it, and then maintain it for them — peppers, pineapples, and several kinds of lettuce included.', { h: 'Why the phones are ringing' }, 'Food safety is the spark, but it’s rarely the whole story. More people are growing their own food with us than ever before — and once they start, they discover the rest: knowing exactly what goes into their food, and the confidence of eating something they watched grow.', '“There’s all these other great reasons to grow food,” Ryan said. “But if that’s the thing that sparks your interest, then great — we’ll talk to you about all the other benefits.”', { h: 'The safety case for a home garden' }, 'A backyard garden shortens the supply chain to a few steps: no truck, no warehouse, no cross-country trip. You control what’s sprayed — or not — and you pick it the day you eat it. It isn’t a cure-all — safe growing and good washing still matter — but for a lot of families, a raised bed of lettuce is peace of mind they can see.', { h: 'Grow yours with us' }, 'Whether you want a couple of raised beds of greens or a full edible landscape, we design it, install it, and keep it thriving. Ready to trust your salad again?'] },
+  { title: 'Garden Friend or Foe? Let\u2019s Talk About Rabbits', date: 'Jan 20, 2026', tag: 'For Kids', cats: ['Edible Gardening', 'For Kids'], img: './assets/blog/rabbit.webp', url: 'https://urbanabundance.com/garden-friend-or-foe-lets-talk-about-rabbits/', excerpt: 'They\u2019re fluffy, fast, and love your veggies as much as you do. Are rabbits helping — or hindering — your harvest?', body: ['They’re fluffy. They’re fast. And they love your veggies just as much as you do.', 'Rabbits are some of the most adorable visitors you might spot in the garden, but are they helping — or hindering — your harvest?', { h: 'The truth about rabbits in the garden' }, 'While they may seem harmless, rabbits are true garden foes. These little foragers have a big appetite for tender greens, young seedlings, and fresh flowers. A single bunny can nibble through an entire row of lettuce overnight.', 'You might notice:', { ul: ['Neatly clipped stems (they have sharp teeth!)', 'Missing seedlings or flower heads', 'Small round droppings left behind'] }, 'Unlike garden allies like ladybugs or bees, rabbits don’t pollinate or protect. They just snack — and disappear.', { h: 'What can you do?' }, 'At Urban Abundance, we like to keep things kind and effective. Here are our go-to strategies to keep rabbits out of your raised beds:', { ul: ['Use fencing — a simple, low barrier about 2 feet tall works wonders.', 'Add strong scents. Rabbits dislike herbs like mint, thyme, and rosemary — plant them along your borders.', 'Try raised beds with drip irrigation. They look great and keep things tidy and less inviting for wildlife.'] }, { h: 'Make it a learning moment' }, 'Got kids at home? Download our newest Garden Friend or Foe? coloring sheet featuring the rabbit — a fun way to teach little gardeners which critters help and which ones hop off with the harvest.', 'Then share your kiddo’s colorful creation and tag us @urbanabundance with #GardenFriendOrFoe.', { cta: { label: 'Download the coloring sheet', href: 'https://urbanabundance.com/wp-content/uploads/2026/01/RABBIt-UA-Coloring-Sheet.pdf' } }] },
+  { title: '2025/26 Winter Harvest How-To Guide', date: 'Jan 5, 2026', tag: 'Plants', cats: ['Edible Gardening', 'Company', 'Plants'], img: './assets/blog/february-harvest.webp', url: 'https://urbanabundance.com/2025-26-urban-abundance-winter-harvest-how-to-guide/', excerpt: 'Your GreenThumb companion for peak flavor and perfect timing — a step-by-step guide to every crop on the winter list.', body: ['Welcome to your step-by-step guide to harvesting every crop from the official Urban Abundance Winter Crop List. Aligned with our South Florida seasonal rhythms, it\u2019s built to help you pick at peak flavor with perfect timing.', 'From tomatoes and leafy greens to roots, brassicas, and herbs, each crop has its own tells for when it\u2019s ready. We\u2019ll walk you through what to look for and how to keep the harvest coming all season.'] },
+  { title: '7 Essential Crops to Combat Rising Grocery Costs', date: 'Dec 12, 2025', tag: 'Vegetables', cats: ['Edible Gardening', 'Vegetables', 'Plants'], img: './assets/blog/grocery-costs.jpg', url: 'https://urbanabundance.com/', excerpt: 'Grocery prices keep climbing. These seven easy-to-grow Florida crops put the savings — and the freshness — back in your hands.', body: ['Every trip to the store seems to cost more than the last. The best hedge against rising grocery bills grows a few steps from your kitchen.', 'These seven crops are proven performers in South Florida beds — high-yield, low-fuss, and far tastier than anything shipped across the country. Plant them once and harvest for months.'] },
+  { title: 'Jicama: The Crunchy Winter Crop You\u2019ll Love', date: 'Dec 2, 2025', tag: 'Recipes', cats: ['Recipes', 'Vegetables', 'Plants'], img: './assets/blog/jicama.png', url: 'https://urbanabundance.com/', excerpt: 'Sweet, crunchy, and refreshing — meet jicama, the South Florida winter root that shines in a bright, zesty slaw.', body: ['Sweet, crisp, and endlessly refreshing, jicama is one of winter\u2019s most underrated crops — and it thrives in our climate.', 'Shred it into a bright slaw with peppers, citrus, and fresh herbs for a crunchy side that disappears fast at any table. Here\u2019s how we grow it and our favorite way to serve it.'] },
+  { title: 'Iguanas in the Garden: Hungry Invaders', date: 'Sep 22, 2025', tag: 'For Kids', cats: ['Edible Gardening', 'For Kids'], img: './assets/blog/drought.jpg', url: 'https://urbanabundance.com/iguanas-in-the-garden-hungry-invaders-you-dont-want-as-neighbors/', excerpt: 'They look cool with their prehistoric swagger, but in South Florida gardens these invasive lizards are big trouble.', body: ['Iguanas may look cool with their prehistoric vibes and sun-basking swagger, but in South Florida gardens they\u2019re big trouble.', 'These hungry, invasive lizards don\u2019t just nibble — they devour, from tender leafy greens to juicy fruit. We\u2019ll show you how to protect your beds and keep these unwanted neighbors moving along.'] },
+  { title: 'Healthy Soil: CropFest & the Magic Mix', date: 'Sep 22, 2025', tag: 'Edible Gardening', cats: ['Edible Gardening', 'For Kids'], img: './assets/blog/cropfest.webp', url: 'https://urbanabundance.com/healthy-soil-for-gardens-rocking-out-with-cropfest-and-urban-abundance-magic-mix/', excerpt: 'A thriving garden starts with one thing: soil. It\u2019s not flashy, but it\u2019s the stage where every act of abundance begins.', body: ['At Urban Abundance, we know a thriving garden starts with one thing: soil. It\u2019s not the flashiest part of the garden — no polka dots like ladybugs, no vibrant blooms — but soil is the stage where every act of abundance begins.', 'Our Magic Mix is built to feed the living web beneath your beds. Celebrate it with the kids at CropFest and grab the coloring page below.'] },
+  { title: 'Earthworm: Garden Friend?', date: 'Sep 1, 2025', tag: 'For Kids', cats: ['Edible Gardening', 'For Kids'], img: './assets/blog/earthworm.png', url: 'https://urbanabundance.com/', excerpt: 'Wiggly, slimy, and secretly amazing — earthworms are your soil\u2019s tiny superheroes. Grab the coloring page and dig in!', body: ['Wiggly, slimy, and secretly amazing — earthworms are the unsung heroes beneath every great garden.', 'As they burrow, they aerate the soil, break down organic matter, and leave behind nutrient-rich castings that feed your plants. Meet the garden\u2019s tiniest superhero with the free coloring page below.'] },
+  { title: 'From Basil Bouquets to Tarragon Tea', date: 'Aug 11, 2025', tag: 'Herbs', cats: ['Edible Gardening', 'Herbs', 'Plants'], img: './assets/photos/patio-garden.avif', url: 'https://urbanabundance.com/from-basil-bouquets-to-tarragon-tea-making-the-most-of-your-south-florida-summer-herbs/', excerpt: 'When summer hits full stride, your herb bed becomes a fragrant jungle overnight. Here\u2019s how to make the most of it.', body: ['When summer hits full stride in South Florida, your herb bed can transform into a lush, fragrant jungle seemingly overnight.', 'Our heat-tolerant herb lineup is no accident — these culinary and medicinal powerhouses are chosen to thrive in our heat. Here\u2019s how to harvest, preserve, and enjoy every last leaf.'] },
+  { title: 'We\u2019re Hiring: North County GreenThumb', date: 'Jul 28, 2025', tag: 'Careers', cats: ['Careers', 'Company'], img: './assets/photos/poolside-beds.png', url: 'https://urbanabundance.com/were-hiring-north-county-greenthumb/', excerpt: 'Grow with us — literally. We\u2019re looking for a passionate, hands-in-the-dirt person to join the team.', body: ['Grow with us — literally. Urban Abundance is on a mission to reconnect people with their food, their health, and their community, one garden at a time.', 'As demand sprouts across North Palm Beach County, we\u2019re looking for a passionate, hands-in-the-dirt kind of person to join our GreenThumb team. Sound like you?'] },
+  { title: 'Ladybugs: Your Spotted Sidekicks', date: 'Jul 28, 2025', tag: 'For Kids', cats: ['Edible Gardening', 'For Kids'], img: './assets/blog/ladybug.webp', url: 'https://urbanabundance.com/ladybugs-in-the-garden/', excerpt: 'Few garden heroes are as mighty (or as cute) as the ladybug — pest-fighting powerhouses in polka dots.', body: ['Let’s hear it for the ladybug!', 'At Urban Abundance, we love a good garden hero — and few are as mighty (or as cute) as the ladybug. With their red-and-black polka dots and tiny fluttery wings, these beetles are more than just pretty. They’re pest-fighting powerhouses that help our GreenThumbs protect your garden the natural way.', { h: 'Why ladybugs are legends' }, 'One ladybug can eat up to 50 aphids a day. Their larvae? Even hungrier. And here’s the kicker — they don’t nibble your plants. They only eat the pests that do.', 'That’s why our GreenThumbs do a little happy dance when they spot ladybugs in your beds. Fewer pests, healthier plants, no chemicals — just good, old-fashioned garden teamwork.', { h: 'Our GreenThumbs & their spotted friends' }, 'Our team knows what ladybugs love — diverse flowers, healthy soil, and no harsh sprays. We plant companion flowers like marigolds and yarrow to invite ladybugs to stick around and lay their eggs.', { h: 'Ladybug tips for home gardeners' }, { ul: ['Plant pollen-rich flowers like calendula or cosmos', 'Avoid synthetic pesticides', 'Keep your garden diverse and full of leafy hiding spots'] }, 'Ladybugs aren’t just good bugs — they’re great partners in cultivating abundance. When they show up, they’re not guests. They’re family.', { cta: { label: 'Download the coloring sheet', href: 'https://urbanabundance.com/wp-content/uploads/2025/07/Lady-Bug-urban-abundance-coloring-sheet.pdf' } }] },
+  { title: 'Homegrown Food Is the Key to Wellness', date: 'Jul 10, 2025', tag: 'Plants', cats: ['Edible Gardening', 'Plants'], img: './assets/photos/customer-garden.jpg', url: 'https://urbanabundance.com/why-homegrown-food-in-south-florida-is-the-key-to-wellness-lessons-from-swedens-tiny-urban-gardens/', excerpt: 'Inspired by Sweden\u2019s tiny urban gardens, homegrown food in South Florida is becoming a wellness revolution.', body: ['Homegrown food in South Florida is no longer just a lifestyle choice — it\u2019s becoming a wellness revolution.', 'Inspired by the tiny urban gardens of Sweden, where allotment plots are woven into the city\u2019s social and public-health fabric, we\u2019re reimagining what a backyard can do for a family\u2019s health.'] },
+  { title: 'Urban Abundance in the Spotlight', date: 'Jul 7, 2025', tag: 'Company', cats: ['Company', 'Plants'], img: './assets/blog/referral.jpg', url: 'https://urbanabundance.com/urban-abundance-in-the-spotlight-why-press-matters-for-the-yard-farming-movement/', excerpt: 'We were featured in Florida Weekly\u2019s \u201cBlooming Business\u201d — why press matters for the yard-farming movement.', body: ['We\u2019re thrilled to share that Urban Abundance was recently featured in Florida Weekly in a full-length feature titled \u201cBlooming Business.\u201d', 'The article highlights our mission, our services, and the growing demand for sustainable, productive gardens across South Florida. Press like this helps grow the whole yard-farming movement.'] },
+  { title: 'The End of the Can', date: 'Jul 2, 2025', tag: 'Vegetables', cats: ['Edible Gardening', 'Vegetables', 'Plants'], img: './assets/blog/del-monte.webp', url: 'https://urbanabundance.com/the-end-of-the-can-why-homegrown-food-in-south-florida-is-the-future-of-wellness/', excerpt: 'Del Monte just filed for bankruptcy. Canned food was born in an era of convenience — here\u2019s what comes next.', body: ['Del Monte just filed for bankruptcy. For a brand that once defined American pantries, that headline should hit hard — but honestly, it shouldn\u2019t be a surprise.', 'Canned food was born in an era of convenience. Today, more families are choosing fresh, homegrown produce over shelf-stable cans — and that shift is reshaping what wellness looks like in South Florida.'] },
+];
+const CATS = ['All', 'Press', 'Edible Gardening', 'Plants', 'Herbs', 'Vegetables', 'For Kids', 'Recipes', 'Careers', 'Company'];
+
+function Blog({ go }) {
+  const { CTABand, Icon } = window;
+  const [cat, setCat] = React.useState('All');
+  const [open, setOpen] = React.useState(null);
+  const openPost = (p) => { setOpen(p); window.scrollTo({ top: 0 }); };
+
+  const Meta = ({ p }) => (
+    <div style={{ display: 'flex', alignItems: 'center', gap: 10, fontFamily: 'var(--font-ui)', fontSize: 13, color: 'var(--taupe)' }}>
+      <span style={{ fontWeight: 700, color: 'var(--green-deep)', letterSpacing: '.08em', textTransform: 'uppercase', fontSize: 12 }}>{p.tag}</span>
+      <span style={{ width: 3, height: 3, borderRadius: '50%', background: 'var(--taupe-300)' }} />
+      <span>{p.date}</span>
+    </div>
+  );
+
+  // ---- Article reader ----
+  if (open) {
+    const related = POSTS.filter(p => p !== open && p.cats.some(c => open.cats.includes(c))).slice(0, 3);
+    return (
+      <div>
+        <article style={{ padding: '40px 0 20px' }}><div className="narrow">
+          <a onClick={() => setOpen(null)} style={{ display: 'inline-flex', alignItems: 'center', gap: 7, fontFamily: 'var(--font-ui)', fontWeight: 700, fontSize: 14, color: 'var(--green-deep)', cursor: 'pointer', marginBottom: 24 }}>← Back to the Journal</a>
+          <Meta p={open} />
+          <h1 className="display" style={{ fontSize: 52, margin: '12px 0 24px', lineHeight: 1.03 }}>{open.title}</h1>
+          <img src={open.img} alt={open.title} style={{ width: '100%', height: 420, objectFit: 'cover', borderRadius: 22, boxShadow: '0 24px 50px rgba(51,48,42,.14)', marginBottom: 32 }} />
+          {open.body.map((b, i) => {
+            if (typeof b !== 'string') {
+              if (b.h) return <h3 key={i} className="display" style={{ fontSize: 28, margin: '28px 0 10px' }}>{b.h}</h3>;
+              if (b.ul) return <ul key={i} style={{ margin: '0 0 20px', padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 10 }}>{b.ul.map((li, j) => <li key={j} style={{ display: 'flex', gap: 11, fontSize: 18, lineHeight: 1.6, color: 'var(--soil-700)' }}><span style={{ color: 'var(--green-deep)', flex: 'none', marginTop: 2 }}><Icon name="leaf" size={18} /></span>{li}</li>)}</ul>;
+              if (b.cta) return <a key={i} className="btn btn-green" href={b.cta.href} target="_blank" rel="noreferrer" style={{ margin: '6px 0 12px' }}>{b.cta.label}</a>;
+              return null;
+            }
+            return <p key={i} style={{ fontSize: i === 0 ? 21 : 18, lineHeight: 1.7, color: i === 0 ? 'var(--soil-900)' : 'var(--soil-700)', fontWeight: 400, marginBottom: 20, fontFamily: i === 0 ? 'var(--display)' : 'var(--font-body)', letterSpacing: i === 0 ? '-.005em' : 0 }}>{b}</p>;
+          })}
+          <div style={{ borderTop: '1px solid var(--sand-200)', marginTop: 28, paddingTop: 24, display: 'flex', gap: 14, alignItems: 'center', flexWrap: 'wrap' }}>
+            <a className="btn btn-lime" onClick={() => go('contact')}>Book a free assessment →</a>
+            <a className="btn btn-ghost" onClick={() => setOpen(null)}>← Back to the Journal</a>
+          </div>
+        </div></article>
+
+        {related.length > 0 && (
+          <section className="section band-bone"><div className="wrap">
+            <div className="sec-head" style={{ marginBottom: 32 }}><h2 className="display" style={{ fontSize: 32, margin: 0 }}>Keep reading</h2></div>
+            <div className="grid-3">
+              {related.map(p => (
+                <div key={p.title} className="card" style={{ cursor: 'pointer' }} onClick={() => openPost(p)}>
+                  <div className="ph"><img src={p.img} alt={p.title} /></div>
+                  <div className="bd" style={{ gap: 10 }}><Meta p={p} /><h3 style={{ fontSize: 20, lineHeight: 1.12 }}>{p.title}</h3></div>
+                </div>
+              ))}
+            </div>
+          </div></section>
+        )}
+        <CTABand go={go} />
+      </div>
+    );
+  }
+
+  // ---- Listing ----
+  const posts = cat === 'All' ? POSTS : POSTS.filter(p => p.cats.includes(cat));
+  const [featured, ...rest] = posts;
+  return (
+    <div>
+      <section style={{ padding: '64px 0 40px' }}><div className="narrow" style={{ textAlign: 'center' }}>
+        <p className="eyebrow" style={{ textAlign: 'center' }}>The Journal</p>
+        <h1 className="display" style={{ fontSize: 68, marginBottom: 16 }}>Seasonal wisdom, <span className="hl">straight from the garden.</span></h1>
+        <p className="lede" style={{ maxWidth: 540, margin: '0 auto' }}>Tips, stories, and South Florida growing know-how from our GreenThumbs.</p>
+      </div></section>
+
+      <div className="wrap" style={{ display: 'flex', gap: 10, flexWrap: 'wrap', justifyContent: 'center', marginBottom: 40 }}>
+        {CATS.map(c => (
+          <button key={c} onClick={() => setCat(c)} style={{ fontFamily: 'var(--font-ui)', fontWeight: 600, fontSize: 14, padding: '9px 16px', borderRadius: 8, cursor: 'pointer', border: `1.5px solid ${cat === c ? 'var(--green-deep)' : 'var(--sand-200)'}`, background: cat === c ? 'var(--green-mist)' : '#fff', color: cat === c ? 'var(--green-forest)' : 'var(--soil-700)' }}>{c}</button>
+        ))}
+      </div>
+
+      <section style={{ paddingBottom: 40 }}><div className="wrap">
+        {featured && (
+          <div className="card ua-split" onClick={() => openPost(featured)} style={{ display: 'grid', gridTemplateColumns: '1.1fr .9fr', gap: 0, marginBottom: 36, cursor: 'pointer' }}>
+            <div style={{ padding: 14 }}><img src={featured.img} alt={featured.title} style={{ width: '100%', height: 340, objectFit: 'cover', borderRadius: '16px 16px 90px 16px' }} /></div>
+            <div className="bd" style={{ justifyContent: 'center', gap: 14, padding: '30px 34px' }}>
+              <span style={{ fontFamily: 'var(--font-ui)', fontWeight: 700, fontSize: 12, letterSpacing: '.14em', textTransform: 'uppercase', color: 'var(--green-deep)' }}>Latest</span>
+              <Meta p={featured} />
+              <h2 className="display" style={{ fontSize: 38, margin: 0, lineHeight: 1.05 }}>{featured.title}</h2>
+              <p style={{ fontSize: 16, lineHeight: 1.6, color: 'var(--soil-700)', margin: 0 }}>{featured.excerpt}</p>
+              <span style={{ fontFamily: 'var(--font-ui)', fontWeight: 700, color: 'var(--green-deep)', display: 'inline-flex', alignItems: 'center', gap: 7 }}>Read the post <Icon name="leaf" size={16} /></span>
+            </div>
+          </div>
+        )}
+        <div className="grid-3">
+          {rest.map(p => (
+            <div key={p.title} className="card" onClick={() => openPost(p)} style={{ cursor: 'pointer' }}>
+              <div className="ph"><img src={p.img} alt={p.title} /></div>
+              <div className="bd" style={{ gap: 10 }}>
+                <Meta p={p} />
+                <h3 style={{ fontSize: 21, lineHeight: 1.12 }}>{p.title}</h3>
+                <p style={{ fontSize: 14.5 }}>{p.excerpt}</p>
+                <span style={{ fontFamily: 'var(--font-ui)', fontWeight: 700, fontSize: 14, color: 'var(--green-deep)', display: 'inline-flex', alignItems: 'center', gap: 6, marginTop: 2 }}>Read more →</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div></section>
+
+      <CTABand go={go} />
+    </div>
+  );
+}
+window.Blog = Blog;
+
+})();
+
+// ===== Contact =====
+(function(){
+// UA 2.0 — Contact / Get Started (embeds the Jobber new-customer work request form)
+//
+// ▶ TO GO LIVE: paste your Jobber form URL + client hub id below.
+//   Find them in Jobber → Marketing → Work Request form → "Embed on website".
+//   The embed snippet looks like:
+//     form_url="https://clienthub.getjobber.com/client_hubs/XXXX/public/work_request/new?source=embed"
+//     clienthub_id="XXXX"
+const JOBBER_FORM_URL = 'https://clienthub.getjobber.com/hubs/c319abfc-2bea-46a6-9f0c-2fa719699013/public/requests/4220680/new';
+const JOBBER_CONFIGURED = !JOBBER_FORM_URL.includes('REPLACE_ME');
+
+function Contact({ go }) {
+  const { Icon } = window;
+  return (
+    <div>
+      <section style={{ padding: '56px 0 40px' }}><div className="narrow" style={{ textAlign: 'center' }}>
+        <p className="eyebrow" style={{ textAlign: 'center' }}>Get started</p>
+        <h1 className="display" style={{ fontSize: 68, marginBottom: 16 }}>Book your <span className="hl">free</span> garden assessment.</h1>
+        <p className="lede" style={{ maxWidth: 520, margin: '0 auto' }}>No pressure, no obligation. Fill out the form and a GreenThumb will reach out within one business day to design your food future.</p>
+      </div></section>
+
+      <section style={{ paddingBottom: 96 }}><div className="wrap">
+        <div className="ua-split" style={{ display: 'grid', gridTemplateColumns: '1.1fr .9fr', gap: 48, alignItems: 'start' }}>
+          {/* JOBBER FORM */}
+          <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '18px 24px', borderBottom: '1px solid var(--sand-200)', background: 'var(--bone)' }}>
+              <span style={{ color: 'var(--green-deep)' }}><Icon name="calendar" size={20} /></span>
+              <span style={{ fontFamily: 'var(--font-ui)', fontWeight: 700, fontSize: 15, color: 'var(--soil-900)' }}>New Customer Request</span>
+              <span style={{ marginLeft: 'auto', fontFamily: 'var(--font-ui)', fontSize: 12, color: 'var(--taupe)' }}>Secure · Powered by Jobber</span>
+            </div>
+            {JOBBER_CONFIGURED ? (
+              <iframe title="Urban Abundance new customer form" src={JOBBER_FORM_URL} style={{ width: '100%', height: 900, border: 'none', display: 'block' }} />
+            ) : (
+              <div style={{ padding: '54px 40px', textAlign: 'center' }}>
+                <div style={{ width: 66, height: 66, borderRadius: '50%', background: 'var(--green-mist)', color: 'var(--green-deep)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', marginBottom: 16 }}><Icon name="sprout" size={32} /></div>
+                <h3 className="display" style={{ fontSize: 26, marginBottom: 10 }}>Jobber form mounts here</h3>
+                <p className="lede" style={{ fontSize: 16, maxWidth: 420, margin: '0 auto 22px' }}>Drop your Jobber work-request <b>form URL</b> into <code style={{ background: 'var(--bone)', padding: '2px 6px', borderRadius: 5, fontSize: 14 }}>JOBBER_FORM_URL</code> at the top of <code style={{ background: 'var(--bone)', padding: '2px 6px', borderRadius: 5, fontSize: 14 }}>Contact.jsx</code> and the live form appears in this panel.</p>
+                <div style={{ textAlign: 'left', maxWidth: 440, margin: '0 auto', background: 'var(--bone)', borderRadius: 12, padding: '18px 20px' }}>
+                  <div style={{ fontFamily: 'var(--font-ui)', fontWeight: 700, fontSize: 12, letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--taupe)', marginBottom: 12 }}>The form collects</div>
+                  {['Full name & contact info', 'Property address', 'What you\u2019d like to grow', 'Preferred contact method & notes'].map(f => (
+                    <div key={f} style={{ display: 'flex', gap: 10, alignItems: 'center', fontSize: 15, color: 'var(--soil-700)', marginBottom: 9 }}>
+                      <span style={{ color: 'var(--green-deep)' }}><Icon name="check" size={16} /></span>{f}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* SIDE — WHAT HAPPENS NEXT */}
+          <div>
+            <div className="card" style={{ background: 'var(--oat)', border: 'none', padding: '30px 30px 32px', marginBottom: 22 }}>
+              <h3 className="display" style={{ fontSize: 24, marginBottom: 18 }}>What happens next</h3>
+              {[['We visit', 'A GreenThumb walks your space and listens to your goals.'], ['We design', 'You get a custom plan — layout, crops, and a transparent quote.'], ['We grow', 'We install and tend it bi-weekly. You harvest and enjoy.']].map(([t, b], i) => (
+                <div key={t} style={{ display: 'flex', gap: 14, marginBottom: i < 2 ? 18 : 0 }}>
+                  <span className="stepno" style={{ background: '#fff' }}>{i + 1}</span>
+                  <div><div style={{ fontFamily: 'var(--font-ui)', fontWeight: 700, fontSize: 16, color: 'var(--soil-900)' }}>{t}</div><div style={{ fontSize: 14.5, color: 'var(--soil-700)', lineHeight: 1.5 }}>{b}</div></div>
+                </div>
+              ))}
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 12, padding: '4px 6px' }}>
+              <div style={{ display: 'flex', gap: 11, alignItems: 'center', fontSize: 15.5, color: 'var(--soil-700)' }}><span style={{ color: 'var(--green-deep)' }}><Icon name="phone" size={19} /></span> <b style={{ color: 'var(--green-deep)' }}>561-319-1272</b></div>
+              <div style={{ display: 'flex', gap: 11, alignItems: 'center', fontSize: 15.5, color: 'var(--soil-700)' }}><span style={{ color: 'var(--green-deep)' }}><Icon name="pin" size={19} /></span> 17035 Jupiter Farms Rd, Jupiter FL</div>
+              <div style={{ display: 'flex', gap: 11, alignItems: 'center', fontSize: 15.5, color: 'var(--soil-700)' }}><span style={{ color: 'var(--green-deep)' }}><Icon name="leaf" size={19} /></span> Nursery · Wed–Fri 9–5, Sat 8–1</div>
+              <div className="pill-note" style={{ marginTop: 6, alignSelf: 'flex-start' }}><Icon name="broadcast" size={16} style={{ color: 'var(--green-lime)' }} /> As seen on <b>WPBF&nbsp;25</b></div>
+            </div>
+          </div>
+        </div>
+      </div></section>
+    </div>
+  );
+}
+window.Contact = Contact;
+
+})();
+
+// ===== NurseryMoved =====
+(function(){
+// Nursery relocation notice — target for urbanabundancenursery.com
+function NurseryMoved({ go }) {
+  const { Icon, CTABand, Reveal } = window;
+  const SP = 'https://smartyplantsfl.com';
+  const SHOP = 'https://shop.smartyplantsfl.com/dept/52/edibles';
+  return (
+    <main>
+      {/* NOTICE */}
+      <section className="section" style={{ paddingTop: 84, paddingBottom: 76 }}><div className="wrap">
+        <div className="ua-split" style={{ display: 'grid', gridTemplateColumns: '1.05fr .95fr', gap: 60, alignItems: 'center' }}>
+          <div>
+            <p className="eyebrow" style={{ display: 'flex', alignItems: 'center', gap: 10 }}><Icon name="pin" size={16} /> We've moved</p>
+            <h1 className="display" style={{ fontSize: 68, margin: '0 0 22px' }}>The Urban Abundance nursery now lives at <span className="hl">SmartyPlants.</span></h1>
+            <p className="lede" style={{ maxWidth: 560, marginBottom: 18 }}>Our plants, our growers, and our know-how have a new home: <b>SmartyPlants Nursery</b> in Lake Worth Beach, FL. Same non-GMO organically sourced edibles — now inside one of South Florida's best independent nurseries.</p>
+            <p style={{ fontSize: 17, lineHeight: 1.6, color: 'var(--soil-700)', maxWidth: 560, margin: '0 0 30px' }}>Come find the Urban Abundance edibles section, talk to a GreenThumb about your garden, and pick out what's in season.</p>
+            <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
+              <a className="btn btn-lime lg" href={SHOP} target="_blank" rel="noreferrer">Shop Urban Abundance plants →</a>
+              <a className="btn btn-ghost lg" href={SP} target="_blank" rel="noreferrer">Visit SmartyPlantsfl.com</a>
+            </div>
+          </div>
+          <div style={{ position: 'relative' }}>
+            <video src="./assets/video/DJI_20260719112111_0479_D.mp4" autoPlay muted loop playsInline aria-label="Urban Abundance edible plants at SmartyPlants Nursery, Lake Worth Beach" style={{ width: '100%', height: 520, objectFit: 'cover', borderRadius: '28px 28px 28px 140px', boxShadow: '0 24px 50px rgba(51,48,42,.16)' }} />
+            <p style={{ fontFamily: 'var(--font-ui)', fontWeight: 600, fontSize: 13.5, color: 'var(--taupe)', margin: '14px 0 0', textAlign: 'center' }}>Farmer Jack at our new location.</p>
+          </div>
+        </div>
+      </div></section>
+
+      {/* DETAILS */}
+      <section className="section band-bone" style={{ padding: '76px 0' }}><div className="wrap">
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(240px,1fr))', gap: 28 }}>
+          {[
+            ['pin', 'Where to find us', <>SmartyPlants Nursery<br />1515 N. Dixie Hwy<br />Lake Worth Beach, FL 33460</>, 'Get directions', 'https://maps.google.com/?q=SmartyPlants+Nursery+1515+N+Dixie+Hwy+Lake+Worth+Beach+FL+33460'],
+            ['basket', 'What we grow', <>Non-GMO, organically sourced edibles — herbs, greens, peppers, tomatoes, tropical fruit trees and more, all suited to South Florida.</>, 'Browse edibles', SHOP],
+            ['sprout', 'Talk to a GreenThumb', <>Planning a garden? Our team still designs, installs, and maintains edible gardens across Palm Beach County.</>, 'Book a free assessment', null],
+          ].map(([ic, h, body, cta, href]) => (
+            <Reveal key={h}>
+              <div style={{ background: '#fff', border: '1px solid var(--sand-200)', borderRadius: 20, padding: '30px 28px', height: '100%', display: 'flex', flexDirection: 'column' }}>
+                <span style={{ color: 'var(--green-deep)', marginBottom: 16, display: 'block' }}><Icon name={ic} size={26} /></span>
+                <h3 style={{ fontFamily: 'var(--font-ui)', fontWeight: 700, fontSize: 19, margin: '0 0 10px', color: 'var(--soil-900)' }}>{h}</h3>
+                <p style={{ fontSize: 15.5, lineHeight: 1.65, color: 'var(--soil-700)', margin: '0 0 20px' }}>{body}</p>
+                {href
+                  ? <a className="btn btn-ghost sm" style={{ marginTop: 'auto', alignSelf: 'flex-start' }} href={href} target="_blank" rel="noreferrer">{cta} →</a>
+                  : <a className="btn btn-ghost sm" style={{ marginTop: 'auto', alignSelf: 'flex-start' }} onClick={() => go('contact')}>{cta} →</a>}
+              </div>
+            </Reveal>
+          ))}
+        </div>
+        <p style={{ fontFamily: 'var(--font-ui)', fontWeight: 600, fontSize: 14.5, color: 'var(--taupe)', margin: '30px 0 0' }}>Nursery hours are set by SmartyPlants — check <a href={SP} target="_blank" rel="noreferrer" style={{ color: 'var(--green-deep)', fontWeight: 700 }}>smartyplantsfl.com</a> before you visit.</p>
+      </div></section>
+
+      <CTABand go={go} />
+    </main>
+  );
+}
+Object.assign(window, { NurseryMoved });
+
+})();
+
 (function () {
-const { Ticker, Header, Footer, Home, HowItWorks, Residential, Commercial, About, Contact, Blog } = window;
-const PAGES = { home: Home, how: HowItWorks, residential: Residential, commercial: Commercial, about: About, blog: Blog, contact: Contact };
+const { Ticker, Header, Footer, Home, HowItWorks, Residential, Commercial, About, Contact, Blog, NurseryMoved } = window;
+const PAGES = { home: Home, how: HowItWorks, residential: Residential, commercial: Commercial, about: About, blog: Blog, contact: Contact, nursery: NurseryMoved };
 function App() {
-  const parseHash = () => { var h = (window.location.hash || ''); if (h.charAt(0) === '#') h = h.slice(1); if (h.charAt(0) === '/') h = h.slice(1); return ['home','how','residential','commercial','about','blog','contact'].indexOf(h) >= 0 ? h : 'home'; };
+  const parseHash = () => { var h = (window.location.hash || ''); if (h.charAt(0) === '#') h = h.slice(1); if (h.charAt(0) === '/') h = h.slice(1); return ['home','how','residential','commercial','about','blog','contact','nursery'].indexOf(h) >= 0 ? h : 'home'; };
   const [page, setPage] = React.useState(parseHash);
   const META = {
     home: ['Urban Abundance | Concierge Edible Gardens in South Florida', 'You relax, we grow. Beautiful, productive edible gardens designed, built, and maintained across South Florida. Book a free assessment.'],
@@ -68,6 +1229,7 @@ function App() {
     about: ['Our Story | Urban Abundance', 'Everyone grows food. Meet the South Florida company on a mission to make growing your own food beautiful, simple, and possible.'],
     blog: ['The Journal | Urban Abundance Garden Blog', 'Tips, stories, and South Florida growing know-how from the Urban Abundance GreenThumbs.'],
     contact: ['Book a Free Garden Assessment | Urban Abundance', 'Ready to grow? Book your free, no-pressure garden assessment with an Urban Abundance GreenThumb today.'],
+    nursery: ['Our Nursery Has Moved to SmartyPlants | Urban Abundance', 'The Urban Abundance nursery is now at SmartyPlants Nursery in Lake Worth Beach, FL. Shop our non-GMO organically sourced edible plants there.'],
   };
   React.useEffect(() => {
     const m = META[page] || META.home;

@@ -22,6 +22,15 @@
 /treatment-center-gardens-urban-abundance-florida/      /#/commercial   301
 /personal-chef-garden-urban-abundance-florida/          /#/commercial   301
 
+# Nursery — legacy urbanabundancenursery.com paths (domain aliased to this site)
+/nursery                                                /#/nursery   301
+/nursery/                                               /#/nursery   301
+/shop                                                   /#/nursery   301
+/shop/*                                                 /#/nursery   301
+/plants/*                                               /#/nursery   301
+/product/*                                              /#/nursery   301
+/product-category/*                                     /#/nursery   301
+
 # About
 /our-team/                                              /#/about     301
 /our-story/                                             /#/about     301
