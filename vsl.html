@@ -1,0 +1,609 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Season Starts Now | Urban Abundance</title>
+<meta name="description" content="Florida grows year-round, but a garden needs lead time. See why installing this summer wins you the full eight-month peak season — then tell us about your yard.">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#35702D">
+<link rel="icon" type="image/png" href="assets/logo-icon.png">
+<link rel="apple-touch-icon" href="assets/logo-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Urban Abundance">
+<meta property="og:title" content="The season doesn't start in October. It starts now.">
+<meta property="og:description" content="Install this summer and you're already rolling when Florida's peak season hits. Fall and winter installs are filling up.">
+<meta property="og:image" content="./assets/photos/luxury-patio.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The season doesn't start in October. It starts now.">
+<meta name="twitter:description" content="Install this summer and you're already rolling when Florida's peak season hits. Fall and winter installs are filling up.">
+<meta name="twitter:image" content="./assets/photos/luxury-patio.jpg">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="site.css">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="root"></div>
+<noscript>
+<h1>The season doesn't start in October. It starts now.</h1>
+<p>Florida grows year-round, but a garden doesn't produce the day you build it. Install this summer and you're already rolling when the eight-month peak season hits in October.</p>
+<p>Urban Abundance designs, builds, and maintains edible gardens across South Florida. Call <a href="tel:5613191272">561-319-1272</a> or email <a href="mailto:info@urbanabundance.com">info@urbanabundance.com</a> to tell us about your yard.</p>
+</noscript>
+<script type="text/babel" data-presets="react">
+// UA 2.0 — brand icon set. Clean, single-color, rounded line style.
+// All icons inherit `color` via currentColor. viewBox 0 0 24 24.
+const P = {
+  sprout: <><path d="M7 20h10" /><path d="M12 20c0-4 0-6 0-8" /><path d="M12 12C11 9 8 8.5 5 8.7c.2 3 2.2 4.8 5 4.6" /><path d="M12 11c.8-2.6 3.4-3.4 6-3.2-.2 2.7-2 4.4-4.6 4.2" /></>,
+  seedling: <><path d="M12 21v-7" /><path d="M12 14C10.5 11 7 11 5 11.5c.4 3 3 4 5 3.2" /><path d="M12 12c1-2.5 4-2.6 6-2-.3 2.6-2.4 3.6-4.6 3" /></>,
+  leaf: <><path d="M11 20C6 20 4 15.5 4 11 9 11 12 8 13 3c3 2 5 5 5 9 0 4.5-3 8-7 8Z" /><path d="M11 20c-1-4-1-7 0-10" /></>,
+  herb: <><path d="M12 21v-9" /><path d="M12 12c-1-2-3.2-2.4-5-2 .3 2.2 2 3.3 3.6 2.8" /><path d="M12 13c1-2 3.2-2.4 5-2-.3 2.2-2 3.3-3.6 2.8" /><path d="M12 8c-.8-1.6-2.6-2-4-1.7.3 1.8 1.7 2.7 3 2.3" /></>,
+  carrot: <><path d="M6 18c-1 1-1 1 0 0Z" /><path d="M17 8 8.5 16.5a3 3 0 0 1-4.2 0v0a3 3 0 0 1 0-4.2L12.8 4" /><path d="M15 6c1-1 3-1 4 0M16 5c0-1.5 1-3 2.5-3.5" /><path d="M11 12l2 2M8 15l2 2" /></>,
+  flower: <><circle cx="12" cy="12" r="2.4" /><path d="M12 9.6C12 6.5 10.5 5 12 3.5 13.5 5 12 6.5 12 9.6Z" /><path d="M12 14.4c0 3.1 1.5 4.6 0 6.1-1.5-1.5 0-3 0-6.1Z" /><path d="M9.6 12C6.5 12 5 10.5 3.5 12 5 13.5 6.5 12 9.6 12Z" /><path d="M14.4 12c3.1 0 4.6 1.5 6.1 0-1.5-1.5-3 0-6.1 0Z" /></>,
+  fruit: <><circle cx="12" cy="14" r="6.5" /><path d="M12 7.5C12 5 13.5 3 16 3c0 2.2-1.4 4.5-4 4.5Z" /></>,
+  sun: <><circle cx="12" cy="12" r="4" /><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M18.4 5.6 17 7M7 17l-1.4 1.4" /></>,
+  droplet: <path d="M12 3c3 4 6 6.8 6 10.3A6 6 0 0 1 6 13.3C6 9.8 9 7 12 3Z" />,
+  calendar: <><rect x="4" y="5" width="16" height="16" rx="3" /><path d="M4 9h16M8 3v4M16 3v4" /><path d="m9 15 2 2 4-4" /></>,
+  broadcast: <><rect x="3" y="8" width="18" height="12" rx="2.5" /><path d="m8 8 4-4 4 4" /><path d="M9 20h6" /></>,
+  check: <path d="M20 6 9 17l-5-5" />,
+  phone: <path d="M6.5 3.5h3l1.5 4-2 1.5a12 12 0 0 0 6 6l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A16 16 0 0 1 4.5 5.7 2 2 0 0 1 6.5 3.5Z" />,
+  pin: <><path d="M12 21s7-6.4 7-11a7 7 0 1 0-14 0c0 4.6 7 11 7 11Z" /><circle cx="12" cy="10" r="2.6" /></>,
+  clock: <><circle cx="12" cy="12" r="8.5" /><path d="M12 7.5V12l3 2" /></>,
+  basket: <><path d="M5 9h14l-1.3 9.2a2 2 0 0 1-2 1.8H8.3a2 2 0 0 1-2-1.8Z" /><path d="m8.5 9 3.5-5 3.5 5" /><path d="M10 13v3M14 13v3" /></>,
+  gift: <><rect x="4" y="9" width="16" height="11" rx="2" /><path d="M4 13h16M12 9v11" /><path d="M12 9C11 5 8 5 7.5 6.6 7 8.2 9.5 9 12 9Zm0 0c1-4 4-4 4.5-2.4C17 8.2 14.5 9 12 9Z" /></>,
+  chat: <path d="M5 5h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H10l-4 3v-3H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z" />,
+  cycle: <><path d="M4.5 12a7.5 7.5 0 0 1 12.9-5.2L20 9" /><path d="M19.5 12a7.5 7.5 0 0 1-12.9 5.2L4 15" /><path d="M20 4v5h-5M4 20v-5h5" /></>,
+  heart: <path d="M12 20S4 15 4 9a4 4 0 0 1 8-1 4 4 0 0 1 8 1c0 6-8 11-8 11Z" />,
+  book: <><path d="M5 4h9a3 3 0 0 1 3 3v13a2.5 2.5 0 0 0-2.5-2.5H5Z" /><path d="M5 4v13.5" /></>,
+  ruler: <><rect x="3" y="8" width="18" height="8" rx="2" transform="rotate(-45 12 12)" /><path d="M9 9.5 10.5 11M11.5 7l1.5 1.5M6.5 12l1.5 1.5" /></>,
+  spark: <path d="M12 3c.6 4.2 1.8 5.4 6 6-4.2.6-5.4 1.8-6 6-.6-4.2-1.8-5.4-6-6 4.2-.6 5.4-1.8 6-6Z" />,
+  star: <path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 17l-5.2 2.6 1-5.8-4.3-4.1 5.9-.9Z" />,
+  instagram: <><rect x="4" y="4" width="16" height="16" rx="5" /><circle cx="12" cy="12" r="3.6" /><circle cx="16.6" cy="7.4" r="1" fill="currentColor" stroke="none" /></>,
+  facebook: <path d="M14.5 8.5H16V5.7h-2.2c-2 0-3.3 1.3-3.3 3.4v1.6H8.2v2.8h2.3V21h2.9v-7.5h2.2l.4-2.8h-2.6V9.4c0-.6.3-.9 1-.9Z" />,
+  youtube: <><rect x="3" y="6.5" width="18" height="11" rx="3.5" /><path d="m10.5 9.5 4.5 2.5-4.5 2.5Z" fill="currentColor" stroke="none" /></>,
+};
+const FILLED = new Set(['star', 'spark', 'droplet', 'heart', 'fruit', 'facebook']);
+function Icon({ name, size = 20, stroke = 1.8, style, ...rest }) {
+  const kids = P[name] || P.leaf;
+  const filled = FILLED.has(name);
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24"
+      fill={filled ? 'currentColor' : 'none'} stroke="currentColor"
+      strokeWidth={filled ? 0 : stroke} strokeLinecap="round" strokeLinejoin="round"
+      style={{ display: 'block', flex: 'none', ...style }} aria-hidden="true" {...rest}>
+      {kids}
+    </svg>
+  );
+}
+function Stars({ n = 5, size = 15, color = 'var(--green-deep)' }) {
+  return <span style={{ display: 'inline-flex', gap: 2, color }}>{Array.from({ length: n }).map((_, i) => <Icon key={i} name="star" size={size} />)}</span>;
+}
+Object.assign(window, { Icon, Stars });
+
+
+// Shared chrome + UI helpers for the UA 2.0 prototype.
+const NAV = [
+  ['Home', 'home'],
+  ['How It Works', 'how'],
+  ['Residential', 'residential'],
+  ['Commercial', 'commercial'],
+  ['Our Story', 'about'],
+  ['Contact', 'contact'],
+];
+const MAIN = [
+  ['How It Works', 'how'],
+  ['Residential', 'residential'],
+  ['Commercial', 'commercial'],
+  ['Contact', 'contact'],
+];
+const MORE = [
+  ['Blog', 'blog'],
+  ['Our Story', 'about'],
+];
+
+function Ticker() {
+  const { Icon } = window;
+  const items = [
+    ['sprout', <>Now planting <b>Winter 2026</b> gardens</>],
+    ['calendar', <>Free garden assessments open</>],
+    ['broadcast', <>As seen on <b>WPBF 25 News</b></>],
+    ['leaf', <>Fresh harvests, <b>zero effort</b></>],
+  ];
+  const run = [...items, ...items];
+  return (
+    <div className="ticker"><div className="run">
+      {run.map((it, i) => <span key={i}><Icon name={it[0]} size={16} style={{ color: 'var(--green-lime)' }} /> {it[1]}</span>)}
+    </div></div>
+  );
+}
+
+function Header({ page, go }) {
+  const { Icon } = window;
+  const [moreOpen, setMoreOpen] = React.useState(false);
+  const [navOpen, setNavOpen] = React.useState(false);
+  const moreActive = MORE.some(([, id]) => id === page);
+  const goM = (id) => { setNavOpen(false); go(id); };
+  return (
+    <header className="site">
+      <div className="nav">
+        <img className="logo" src="assets/logo-horizontal.png" alt="Urban Abundance — edible garden design and maintenance" onClick={() => go('home')} />
+        <div className="links">
+          {MAIN.map(([label, id]) => (
+            <a key={id} href={'/' + (id === 'home' ? '' : id)} className={page === id ? 'active' : ''} onClick={(e) => { e.preventDefault(); go(id); }}>{label}</a>
+          ))}
+          <div style={{ position: 'relative' }} onMouseEnter={() => setMoreOpen(true)} onMouseLeave={() => setMoreOpen(false)}>
+            <a className={moreActive ? 'active' : ''} style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }} onClick={() => setMoreOpen(o => !o)}>More <span style={{ display: 'inline-block', transform: moreOpen ? 'rotate(180deg)' : 'none', transition: 'transform .18s', fontSize: 11 }}>▾</span></a>
+            {moreOpen && (
+              <div style={{ position: 'absolute', top: '100%', left: -14, marginTop: 8, minWidth: 190, background: '#fff', border: '1px solid var(--sand-200)', borderRadius: 12, boxShadow: '0 16px 36px rgba(51,48,42,.14)', padding: 8, zIndex: 50 }}>
+                {MORE.map(([label, id]) => (
+                  <a key={id} onClick={() => { setMoreOpen(false); go(id); }} style={{ display: 'block', padding: '10px 12px', borderRadius: 8, fontFamily: 'var(--font-ui)', fontWeight: 600, fontSize: 15, color: page === id ? 'var(--green-deep)' : 'var(--soil-700)', background: page === id ? 'var(--bone)' : 'transparent' }}>{label}</a>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+        <span className="phone">561-319-1272</span>
+        <a className="btn btn-lime sm" onClick={() => go('contact')}>Book Assessment</a>
+        <button className="nav-toggle" aria-label="Menu" onClick={() => setNavOpen(o => !o)}>
+          <span style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+            <span style={{ width: 20, height: 2, background: 'currentColor', borderRadius: 2, transition: 'transform .2s', transform: navOpen ? 'translateY(6px) rotate(45deg)' : 'none' }} />
+            <span style={{ width: 20, height: 2, background: 'currentColor', borderRadius: 2, opacity: navOpen ? 0 : 1 }} />
+            <span style={{ width: 20, height: 2, background: 'currentColor', borderRadius: 2, transition: 'transform .2s', transform: navOpen ? 'translateY(-6px) rotate(-45deg)' : 'none' }} />
+          </span>
+        </button>
+      </div>
+      {navOpen && (
+        <div className="mobile-menu">
+          {[...MAIN, ...MORE].map(([label, id]) => (
+            <a key={id} className={page === id ? 'active' : ''} onClick={() => goM(id)}>{label}</a>
+          ))}
+          <a href="tel:5613191272" style={{ color: 'var(--green-deep)', fontWeight: 700 }}>561-319-1272</a>
+          <a className="btn btn-lime" style={{ justifyContent: 'center', marginTop: 8 }} onClick={() => goM('contact')}>Book Assessment</a>
+        </div>
+      )}
+    </header>
+  );
+}
+
+function Footer({ go }) {
+  return (
+    <footer className="site"><div className="wrap">
+      <div className="cols">
+        <div style={{ flex: '1 1 300px', minWidth: 260 }}>
+          <img className="logo" src="assets/logo-horizontal-white.png" alt="Urban Abundance" />
+          <p style={{ fontSize: 15, lineHeight: 1.6, maxWidth: 300, margin: '0 0 18px' }}>Concierge edible gardens for South Florida. You relax, we grow — one garden at a time.</p>
+          <div style={{ display: 'flex', gap: 10 }}>
+            {[['instagram', 'https://www.instagram.com/urbanabundancefl/'], ['facebook', 'https://www.facebook.com/urbanabundancefl/'], ['youtube', 'https://www.youtube.com/channel/UClcT_BCIgVRiX_DppyD4B0Q']].map(([s, href]) => (
+              <a key={s} href={href} target="_blank" rel="noreferrer" aria-label={s} style={{ width: 38, height: 38, borderRadius: '50%', background: 'rgba(255,255,255,0.1)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: 'var(--green-lime)' }}>
+                <window.Icon name={s} size={18} />
+              </a>
+            ))}
+          </div>
+        </div>
+        <div><h4>Explore</h4>{NAV.map(([l, id]) => <a key={id} onClick={() => go(id)}>{l}</a>)}</div>
+        <div><h4>Services</h4><a onClick={() => go('how')}>Garden design</a><a onClick={() => go('how')}>Installation</a><a onClick={() => go('how')}>Maintenance membership</a><a onClick={() => go('residential')}>Residential</a></div>
+        <div><h4>Visit</h4><a href="https://maps.google.com/?q=1515+N+Dixie+Hwy+Lake+Worth+Beach+FL+33460" target="_blank" rel="noreferrer">1515 N. Dixie Hwy, Lake Worth Beach</a><a>Tues–Sat, 8:30–5pm</a><a href="tel:5613191272">561-319-1272</a><a href="mailto:info@urbanabundance.com">info@urbanabundance.com</a></div>
+      </div>
+      <div className="bottom">
+        <span>© Urban Abundance 2026 · Lake Worth Beach, FL</span>
+        <span>Privacy · Terms</span>
+      </div>
+    </div></footer>
+  );
+}
+
+// CTA band reused across pages
+function CTABand({ go }) {
+  return (
+    <section className="section band-dark"><div className="wrap" style={{ textAlign: 'center' }}>
+      <p className="eyebrow on-dark" style={{ textAlign: 'center' }}>Your garden is waiting</p>
+      <h2 className="display" style={{ fontSize: 60, margin: '0 auto 20px', maxWidth: 760 }}>Let's grow something <span className="hl">delicious.</span></h2>
+      <p className="lede" style={{ maxWidth: 540, margin: '0 auto 34px' }}>Book a free, no-pressure garden assessment. We'll walk your space and design your food future.</p>
+      <div style={{ display: 'flex', gap: 14, justifyContent: 'center' }}>
+        <a className="btn btn-lime lg" onClick={() => go('contact')}>Book a free assessment →</a>
+        <a className="btn btn-ghost-l lg" href="tel:5613191272">Call 561-319-1272</a>
+      </div>
+    </div></section>
+  );
+}
+
+function Reveal({ children, style }) {
+  const ref = React.useRef(null);
+  const [seen, setSeen] = React.useState(false);
+  React.useEffect(() => {
+    const el = ref.current;
+    if (!el || !('IntersectionObserver' in window)) { setSeen(true); return; }
+    const io = new IntersectionObserver((e) => { if (e[0].isIntersecting) { setSeen(true); io.disconnect(); } }, { threshold: 0.12 });
+    io.observe(el);
+    const t = setTimeout(() => setSeen(true), 1200);
+    return () => { clearTimeout(t); io.disconnect(); };
+  }, []);
+  return <div ref={ref} style={{ opacity: seen ? 1 : 0, transform: seen ? 'none' : 'translateY(22px)', transition: 'opacity .7s var(--ease-grow), transform .7s var(--ease-grow)', ...style }}>{children}</div>;
+}
+
+// ---- Jobber work-request embed (official snippet, auto-resizing) ----
+const JOBBER_CLIENTHUB_ID = 'c319abfc-2bea-46a6-9f0c-2fa719699013-1583819';
+const JOBBER_EMBED_CSS = 'https://d3ey4dbjkt2f6s.cloudfront.net/assets/external/work_request_embed.css';
+const JOBBER_EMBED_JS = 'https://d3ey4dbjkt2f6s.cloudfront.net/assets/static_link/work_request_embed_snippet.js';
+const JOBBER_PUBLIC_URL = 'https://clienthub.getjobber.com/client_hubs/c319abfc-2bea-46a6-9f0c-2fa719699013/public/work_request/new?form_id=1583819';
+const JOBBER_FORM_BASE = 'https://clienthub.getjobber.com/client_hubs/c319abfc-2bea-46a6-9f0c-2fa719699013/public/work_request/embedded_work_request_form?form_id=1583819';
+
+// Attribution: the Jobber snippet builds its iframe src from clienthub_id, so params
+// added here are not guaranteed to reach the form. We still pass them (harmless if
+// ignored) and stash them so the /thanks conversion event carries the real source.
+function rememberAttribution() {
+  const keep = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'gclid', 'fbclid'];
+  try {
+    const here = new URLSearchParams(window.location.search);
+    const found = {};
+    keep.forEach(k => { const v = here.get(k); if (v) found[k] = v; });
+    if (Object.keys(found).length) sessionStorage.setItem('ua_attribution', JSON.stringify(found));
+  } catch (e) {}
+}
+
+function jobberFormUrl() {
+  const keep = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'gclid', 'fbclid'];
+  const here = new URLSearchParams(window.location.search);
+  const out = [];
+  keep.forEach(k => { const v = here.get(k); if (v) out.push(encodeURIComponent(k) + '=' + encodeURIComponent(v)); });
+  return out.length ? JOBBER_FORM_BASE + '&' + out.join('&') : JOBBER_FORM_BASE;
+}
+
+// The official Jobber snippet initializes once per page load, so on client-side
+// navigation it will not rebuild its iframe. We run the snippet first (correct
+// behavior on a cold load) and, if no iframe appears, insert Jobber's own embedded
+// form frame ourselves — the same URL the snippet builds — so the form is always
+// there and always submits into Jobber.
+const JOBBER_EMBED_FRAME = 'https://clienthub.getjobber.com/hubs/c319abfc-2bea-46a6-9f0c-2fa719699013/public/requests/1583819/embedded_new?source=embedded_inline';
+
+function jobberEmbedFrameUrl() {
+  const p = new URLSearchParams();
+  p.set('source', 'embedded_inline');
+  try {
+    p.set('ga_page_location', window.location.href);
+    p.set('ga_page_title', document.title);
+    if (document.referrer) p.set('ga_page_referrer', document.referrer);
+  } catch (e) {}
+  return JOBBER_EMBED_FRAME.split('?')[0] + '?' + p.toString();
+}
+
+function JobberForm() {
+  const host = React.useRef(null);
+  const [armed, setArmed] = React.useState(false);
+  const [stalled, setStalled] = React.useState(false);
+
+  React.useEffect(() => {
+    let done = false;
+    const arm = () => { if (!done) { done = true; setArmed(true); } };
+    const el = host.current;
+    let io = null;
+    if (el && 'IntersectionObserver' in window) {
+      io = new IntersectionObserver((e) => { if (e[0].isIntersecting) arm(); }, { rootMargin: '600px' });
+      io.observe(el);
+    }
+    const t = setTimeout(arm, 700);
+    return () => { clearTimeout(t); if (io) io.disconnect(); };
+  }, []);
+
+  React.useEffect(() => {
+    if (!armed) return;
+    rememberAttribution();
+    if (!document.querySelector('link[href="' + JOBBER_EMBED_CSS + '"]')) {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet'; link.media = 'screen'; link.href = JOBBER_EMBED_CSS;
+      document.head.appendChild(link);
+    }
+    if (!document.getElementById('ua-jobber-embed-css')) {
+      const st = document.createElement('style');
+      st.id = 'ua-jobber-embed-css';
+      // Jobber grows the frame via postMessage from its own origin; if that message is
+      // slow or blocked the frame would sit at 40px. This floor keeps it usable.
+      st.textContent = '#' + JOBBER_CLIENTHUB_ID + '{min-height:760px!important;height:auto!important;display:block}'
+        + '#' + JOBBER_CLIENTHUB_ID + '.jobber-inline-work-request{min-height:760px!important;height:auto!important}'
+        + '#' + JOBBER_CLIENTHUB_ID + ' iframe{width:100%!important;min-height:760px!important;border:none;display:block}';
+      document.head.appendChild(st);
+    }
+    const prev = document.querySelector('script[data-jobber-embed]');
+    if (prev) prev.remove();
+    const sc = document.createElement('script');
+    sc.src = JOBBER_EMBED_JS;
+    sc.setAttribute('clienthub_id', JOBBER_CLIENTHUB_ID);
+    sc.setAttribute('form_url', jobberFormUrl());
+    sc.setAttribute('data-jobber-embed', '1');
+    document.body.appendChild(sc);
+
+    // Self-heal: if the snippet did not build a frame (re-mount after navigation,
+    // blocked script, cached no-op), mount Jobber's embedded form frame directly.
+    const check = setTimeout(() => {
+      const box = document.getElementById(JOBBER_CLIENTHUB_ID);
+      if (box && !box.querySelector('iframe')) {
+        const fr = document.createElement('iframe');
+        fr.className = 'jobber-work-request';
+        fr.title = 'Urban Abundance new customer request form';
+        fr.src = jobberEmbedFrameUrl();
+        fr.setAttribute('allow', 'clipboard-write');
+        box.appendChild(fr);
+        setStalled(true);
+      }
+    }, 2200);
+    return () => clearTimeout(check);
+  }, [armed]);
+
+  return (
+    <div ref={host} style={{ padding: '8px 4px' }}>
+      <div id={JOBBER_CLIENTHUB_ID} />
+      {!armed && <div style={{ fontFamily: 'var(--font-ui)', fontSize: 14.5, color: 'var(--taupe)', padding: '40px 24px', textAlign: 'center' }}>Loading the request form…</div>}
+      <div style={{ borderTop: '1px solid var(--sand-200)', marginTop: 8, padding: '14px 20px', display: 'flex', flexWrap: 'wrap', gap: 8, alignItems: 'center', justifyContent: 'space-between', fontFamily: 'var(--font-ui)', fontSize: 14, color: 'var(--taupe)' }}>
+        <span>{stalled ? 'Trouble with the form?' : 'Form not loading?'}</span>
+        <span style={{ display: 'flex', gap: 14 }}>
+          <a href={JOBBER_PUBLIC_URL} target="_blank" rel="noreferrer" style={{ fontWeight: 700 }}>Open it in a new tab</a>
+          <a href="tel:5613191272" style={{ fontWeight: 700 }}>or call 561-319-1272</a>
+        </span>
+      </div>
+    </div>
+  );
+}
+
+Object.assign(window, { Ticker, Header, Footer, CTABand, Reveal, JobberForm, UA_NAV: NAV });
+
+
+// UA 2.0 — VSL lead-generation landing page ("Now is the time to plant")
+// Standalone conversion page: slim chrome, video first, Book Assessment form (Jobber).
+function VSLHeader({ go }) {
+  const scroll = () => { const el = document.getElementById('book'); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 20, behavior: 'smooth' }); };
+  return (
+    <header style={{ position: 'sticky', top: 0, zIndex: 40, background: 'rgba(252,251,246,.92)', backdropFilter: 'blur(10px)', borderBottom: '1px solid var(--sand-200)' }}>
+      <div className="wrap" style={{ display: 'flex', alignItems: 'center', gap: 18, padding: '14px 40px' }}>
+        <img src="assets/logo-horizontal.png" alt="Urban Abundance" style={{ height: 40, cursor: 'pointer' }} onClick={() => go('home')} />
+        <span style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 16 }}>
+          <a href="tel:5613191272" style={{ fontFamily: 'var(--font-ui)', fontWeight: 700, fontSize: 15, color: 'var(--green-deep)' }}>561-319-1272</a>
+          <a className="btn btn-lime sm" onClick={scroll}>Get on the install calendar</a>
+        </span>
+      </div>
+    </header>
+  );
+}
+
+function VSL({ go }) {
+  const { Icon, Stars, Reveal, JobberForm } = window;
+  const scroll = () => { const el = document.getElementById('book'); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 20, behavior: 'smooth' }); };
+  return (
+    <div>
+      <VSLHeader go={go} />
+
+      {/* HERO — the video is the star */}
+      <section style={{ padding: '52px 0 20px' }}><div className="wrap" style={{ maxWidth: 1040 }}>
+        <div style={{ textAlign: 'center', marginBottom: 30 }}>
+          <p className="eyebrow" style={{ textAlign: 'center' }}>Watch: 1 minute · South Florida</p>
+          <h1 className="display" style={{ fontSize: 74, marginBottom: 18, lineHeight: 1.02 }}>The season doesn't start in October.<br />It starts <span className="hl">now.</span></h1>
+          <p className="lede" style={{ maxWidth: 600, margin: '0 auto' }}>Florida grows year-round — but a garden doesn't produce the day you build it. Soil has to wake up, beds have to settle, roots have to get down. Install this summer and you're already rolling when the peak season hits.</p>
+        </div>
+        <div style={{ width: '100%', aspectRatio: '16 / 9', background: 'var(--soil-900)', borderRadius: '24px 24px 110px 24px', boxShadow: '0 30px 60px rgba(51,48,42,.18)', overflow: 'hidden' }}>
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/zxNw15K6Wuk?rel=0&modestbranding=1&playsinline=1"
+            title="The season doesn't start in October — Urban Abundance"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+            style={{ width: '100%', height: '100%', border: 0, display: 'block' }}
+          /></div>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16, alignItems: 'center', justifyContent: 'center', marginTop: 30 }}>
+          <a className="btn btn-lime lg" onClick={scroll}>Tell us about your yard →</a>
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 10 }}>
+            <Stars size={15} />
+            <span style={{ fontFamily: 'var(--font-ui)', fontWeight: 700, fontSize: 14.5, color: 'var(--soil-900)' }}>4.9 · 300+ South Florida families</span>
+          </span>
+        </div>
+      </div></section>
+
+      {/* PROOF STRIP */}
+      <section className="band-bone" style={{ marginTop: 44, borderTop: '1px solid var(--sand-200)', borderBottom: '1px solid var(--sand-200)' }}><div className="wrap" style={{ padding: '40px' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'stretch', flexWrap: 'wrap' }}>
+          {[['calendar', '12', 'Growing months a year'], ['sprout', '500+', 'Garden beds planted'], ['broadcast', 'WPBF 25', 'As seen on the news']].map(([ic, v, l], i) => (
+            <React.Fragment key={l}>
+              {i > 0 && <span style={{ width: 1, background: 'var(--sand-200)', margin: '0 clamp(24px,5vw,64px)' }} />}
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 6, minWidth: 150 }}>
+                <span style={{ color: 'var(--green-deep)' }}><Icon name={ic} size={24} /></span>
+                <span className="display" style={{ fontSize: 46, lineHeight: 1, color: 'var(--green-deep)' }}>{v}</span>
+                <span style={{ fontFamily: 'var(--font-ui)', fontWeight: 600, fontSize: 13.5, letterSpacing: '.04em', textTransform: 'uppercase', color: 'var(--taupe)' }}>{l}</span>
+              </div>
+            </React.Fragment>
+          ))}
+        </div>
+      </div></section>
+
+      {/* THE TIMELINE — Florida grows year-round; the season is won by installing now */}
+      <section className="section tight"><div className="wrap" style={{ maxWidth: 1000 }}>
+        <div className="sec-head center" style={{ marginBottom: 40 }}>
+          <p className="eyebrow" style={{ textAlign: 'center' }}>The Florida growing year</p>
+          <h2 className="display">There is no <span className="hl leaf">dead season.</span></h2>
+          <p className="lede">Summer feeds you here if you plant for it — and October is when this place absolutely goes off. The gardens that get all eight peak months are the ones built before it starts.</p>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: 4, marginBottom: 18 }}>
+          {[
+            ['Jul – Sep', 'Build + summer crops', 'Okra, sweet potato, peppers, Everglades tomatoes, tropical greens and herbs — going strong in the heat while your soil wakes up.', 'var(--green-mist)', 'var(--soil-900)'],
+            ['Oct – May', 'Peak season — eight straight months', 'Greens, tomatoes, beans, brassicas, all of it, while the rest of the country is frozen. Nothing to catch up on if you started early.', 'var(--green-deep)', '#fff'],
+          ].map(([span, label, body, bg, fg], i) => (
+            <div key={span} style={{ background: bg, color: fg, padding: '26px 28px 28px', borderRadius: i === 0 ? '18px 4px 4px 18px' : '4px 18px 18px 4px' }}>
+              <div style={{ fontFamily: 'var(--font-ui)', fontWeight: 700, fontSize: 12.5, letterSpacing: '.14em', textTransform: 'uppercase', opacity: .8, marginBottom: 8 }}>{span}</div>
+              <div className="display" style={{ fontSize: 27, marginBottom: 10, lineHeight: 1.12 }}>{label}</div>
+              <p style={{ fontSize: 15.5, lineHeight: 1.6, margin: 0, opacity: i === 0 ? 1 : .92 }}>{body}</p>
+            </div>
+          ))}
+        </div>
+        <p style={{ fontFamily: 'var(--font-ui)', fontSize: 16.5, fontWeight: 700, color: 'var(--soil-900)', textAlign: 'center', margin: 0 }}>Wait until fall, and you'll spend your best months catching up.</p>
+      </div></section>
+
+      {/* WHAT YOU GET */}
+      <section className="section tight band-bone"><div className="wrap">
+        <div className="sec-head center" style={{ marginBottom: 40 }}>
+          <p className="eyebrow" style={{ textAlign: 'center' }}>How it works</p>
+          <h2 className="display">You get the garden. We do the <span className="hl leaf">hard part.</span></h2>
+          <p className="lede">You don't do it alone — that's the whole point of us.</p>
+        </div>
+        <div className="grid-3">
+          {[
+            ['sprout', 'We design it', 'For your yard, your sun, and what your family actually wants on their plates.'],
+            ['basket', 'We build it', 'Beds, living soil, irrigation, plants — organically sourced and ready to grow from day one.'],
+            ['cycle', 'A GreenThumb keeps coming back', 'To plant, prune, feed, and hand you the harvest. You just step outside and pick dinner.'],
+          ].map(([ic, t, b]) => (
+            <Reveal key={t}><div className="card" style={{ padding: '30px 28px 32px' }}>
+              <span style={{ display: 'inline-flex', width: 52, height: 52, borderRadius: '50%', background: 'var(--green-mist)', color: 'var(--green-deep)', alignItems: 'center', justifyContent: 'center', marginBottom: 16 }}><Icon name={ic} size={26} /></span>
+              <h3 className="display" style={{ fontSize: 25, marginBottom: 10 }}>{t}</h3>
+              <p style={{ fontSize: 16, lineHeight: 1.6, color: 'var(--soil-700)', margin: 0 }}>{b}</p>
+            </div></Reveal>
+          ))}
+        </div>
+      </div></section>
+
+      {/* TESTIMONIAL */}
+      <section className="band-oat" style={{ padding: '72px 0' }}><div className="narrow" style={{ textAlign: 'center' }}>
+        <Stars size={17} />
+        <p className="display" style={{ fontSize: 34, lineHeight: 1.28, margin: '18px auto 16px', maxWidth: 760 }}>“The kids will eat a pepper because they grew it. We went from a patch of grass to picking salad for dinner — and they handle everything.”</p>
+        <p style={{ fontFamily: 'var(--font-ui)', fontWeight: 700, fontSize: 15, color: 'var(--taupe)', margin: 0 }}>Jupiter, FL · Stewardship member</p>
+      </div></section>
+
+      {/* FORM */}
+      <section id="book" style={{ padding: '80px 0 96px', scrollMarginTop: 20 }}><div className="wrap">
+        <div className="sec-head center" style={{ marginBottom: 40 }}>
+          <p className="eyebrow" style={{ textAlign: 'center' }}>Come grow with us</p>
+          <h2 className="display">Tell us about your <span className="hl">yard.</span></h2>
+          <p className="lede">We build these by hand, one yard at a time — and installs for fall and winter harvests are filling up now. When the calendar's full, the next opening is mid-season.</p>
+        </div>
+        <div className="ua-split" style={{ display: 'grid', gridTemplateColumns: '1.1fr .9fr', gap: 48, alignItems: 'start' }}>
+          <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '18px 24px', borderBottom: '1px solid var(--sand-200)', background: 'var(--bone)' }}>
+              <span style={{ color: 'var(--green-deep)' }}><Icon name="calendar" size={20} /></span>
+              <span style={{ fontFamily: 'var(--font-ui)', fontWeight: 700, fontSize: 15, color: 'var(--soil-900)' }}>New Customer Request</span>
+              <span style={{ marginLeft: 'auto', fontFamily: 'var(--font-ui)', fontSize: 12, color: 'var(--taupe)' }}>Secure · Powered by Jobber</span>
+            </div>
+            <JobberForm />
+          </div>
+          <div>
+            <div className="card" style={{ background: 'var(--oat)', border: 'none', padding: '30px 30px 32px', marginBottom: 22 }}>
+              <h3 className="display" style={{ fontSize: 24, marginBottom: 18 }}>What happens next</h3>
+              {[['We visit', 'We walk your yard, your sun, and what you want on your plates.'], ['We build', 'Beds, living soil, irrigation, plants — ready to grow from day one.'], ['We keep coming back', 'A GreenThumb plants, prunes, and hands you the harvest.']].map(([t, b], i) => (
+                <div key={t} style={{ display: 'flex', gap: 14, marginBottom: i < 2 ? 18 : 0 }}>
+                  <span className="stepno" style={{ background: '#fff' }}>{i + 1}</span>
+                  <div><div style={{ fontFamily: 'var(--font-ui)', fontWeight: 700, fontSize: 16, color: 'var(--soil-900)' }}>{t}</div><div style={{ fontSize: 14.5, color: 'var(--soil-700)', lineHeight: 1.5 }}>{b}</div></div>
+                </div>
+              ))}
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 12, padding: '4px 6px' }}>
+              <div style={{ display: 'flex', gap: 11, alignItems: 'center', fontSize: 15.5, color: 'var(--soil-700)' }}><span style={{ color: 'var(--green-deep)' }}><Icon name="phone" size={19} /></span> Prefer to talk? <b style={{ color: 'var(--green-deep)' }}>561-319-1272</b></div>
+              <div style={{ display: 'flex', gap: 11, alignItems: 'center', fontSize: 15.5, color: 'var(--soil-700)' }}><span style={{ color: 'var(--green-deep)' }}><Icon name="pin" size={19} /></span> Serving Palm Beach County — Boca Raton to Jupiter</div>
+              <div style={{ display: 'flex', gap: 11, alignItems: 'center', fontSize: 15.5, color: 'var(--soil-700)' }}><span style={{ color: 'var(--green-deep)' }}><Icon name="calendar" size={19} /></span> Fall &amp; winter installs are filling up now</div>
+            </div>
+          </div>
+        </div>
+      </div></section>
+
+      {/* SLIM FOOTER */}
+      <footer style={{ background: 'var(--soil-900)', color: 'rgba(255,255,255,.78)', padding: '34px 0' }}><div className="wrap" style={{ display: 'flex', flexWrap: 'wrap', gap: 18, alignItems: 'center', padding: '0 40px' }}>
+        <img src="assets/logo-horizontal-white.png" alt="Urban Abundance" style={{ height: 34 }} />
+        <span style={{ fontFamily: 'var(--font-ui)', fontSize: 14 }}>© Urban Abundance 2026 · Installs for fall/winter harvests are filling up.</span>
+        <span style={{ marginLeft: 'auto', display: 'flex', gap: 18, fontFamily: 'var(--font-ui)', fontSize: 14 }}>
+          <a href="tel:5613191272" style={{ color: 'var(--green-lime)' }}>561-319-1272</a>
+          <a href="mailto:info@urbanabundance.com" style={{ color: 'var(--green-lime)' }}>info@urbanabundance.com</a>
+        </span>
+      </div></footer>
+    </div>
+  );
+}
+window.VSL = VSL;
+
+
+// UA 2.0 — Thank-you page. Set this as the Jobber work-request redirect URL:
+//   https://urbanabundance.com/thanks   (or  https://urbanabundance.com/#/thanks)
+//
+// Besides reassurance, it fires the lead conversion once. No pixel is installed yet:
+// the dataLayer push below happens regardless, and the gtag/fbq calls are skipped
+// safely until a tag exists. When you add Google Ads, drop the gtag.js snippet in
+// index.html <head> and swap the generic event for:
+//   gtag('event','conversion',{ send_to:'AW-XXXXXXXXX/LABEL' });
+function fireLeadConversion() {
+  if (window.__ua_lead_fired) return;
+  window.__ua_lead_fired = true;
+  const params = new URLSearchParams(window.location.search);
+  let stashed = {};
+  try { stashed = JSON.parse(sessionStorage.getItem('ua_attribution') || '{}'); } catch (e) {}
+  const at = (k) => params.get(k) || stashed[k] || '';
+  const payload = {
+    event: 'generate_lead',
+    form: 'jobber_work_request',
+    utm_source: at('utm_source'),
+    utm_medium: at('utm_medium'),
+    utm_campaign: at('utm_campaign'),
+    gclid: at('gclid'),
+    fbclid: at('fbclid'),
+  };
+  try { (window.dataLayer = window.dataLayer || []).push(payload); } catch (e) {}
+  // Google Ads / GA4 — fires only once gtag.js is on the page.
+  try { if (typeof window.gtag === 'function') { window.gtag('event', 'generate_lead', payload); } } catch (e) {}
+  // Meta
+  try { if (typeof window.fbq === 'function') { window.fbq('track', 'Lead'); } } catch (e) {}
+}
+
+function Thanks({ go }) {
+  const { Icon } = window;
+  React.useEffect(() => { fireLeadConversion(); }, []);
+  return (
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+      <header style={{ borderBottom: '1px solid var(--sand-200)' }}>
+        <div className="wrap" style={{ display: 'flex', alignItems: 'center', padding: '14px 40px' }}>
+          <img src="assets/logo-horizontal.png" alt="Urban Abundance" style={{ height: 40, cursor: 'pointer' }} onClick={() => go('home')} />
+          <a href="tel:5613191272" style={{ marginLeft: 'auto', fontFamily: 'var(--font-ui)', fontWeight: 700, fontSize: 15, color: 'var(--green-deep)' }}>561-319-1272</a>
+        </div>
+      </header>
+
+      <section style={{ flex: 1, padding: '76px 0 88px' }}><div className="narrow" style={{ textAlign: 'center' }}>
+        <span style={{ display: 'inline-flex', width: 74, height: 74, borderRadius: '50%', background: 'var(--green-mist)', color: 'var(--green-deep)', alignItems: 'center', justifyContent: 'center', marginBottom: 22 }}><Icon name="sprout" size={36} /></span>
+        <p className="eyebrow" style={{ textAlign: 'center' }}>Request received</p>
+        <h1 className="display" style={{ fontSize: 62, marginBottom: 18, lineHeight: 1.04 }}>Your garden is officially <span className="hl">in motion.</span></h1>
+        <p className="lede" style={{ maxWidth: 540, margin: '0 auto 40px' }}>Thanks — we've got your request. We'll reach out within one business day to talk through your yard and get you on the install calendar.</p>
+
+        <div className="card" style={{ background: 'var(--oat)', border: 'none', padding: '30px 30px 32px', textAlign: 'left', maxWidth: 560, margin: '0 auto 34px' }}>
+          <h2 className="display" style={{ fontSize: 24, marginBottom: 18 }}>What happens next</h2>
+          {[['We call', 'A quick call to understand your space and goals.'], ['We visit', 'A GreenThumb walks the property — free, no obligation.'], ['We design', 'You get a custom plan, crop list, and transparent quote.']].map(([t, b], i) => (
+            <div key={t} style={{ display: 'flex', gap: 14, marginBottom: i < 2 ? 18 : 0 }}>
+              <span className="stepno" style={{ background: '#fff' }}>{i + 1}</span>
+              <div><div style={{ fontFamily: 'var(--font-ui)', fontWeight: 700, fontSize: 16, color: 'var(--soil-900)' }}>{t}</div><div style={{ fontSize: 14.5, color: 'var(--soil-700)', lineHeight: 1.5 }}>{b}</div></div>
+            </div>
+          ))}
+        </div>
+
+        <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
+          <a className="btn btn-lime" onClick={() => go('how')}>See how it works</a>
+          <a className="btn btn-ghost" onClick={() => go('blog')}>Read the Journal</a>
+        </div>
+        <p style={{ fontFamily: 'var(--font-ui)', fontSize: 14.5, color: 'var(--taupe)', marginTop: 26 }}>Need us sooner? Call <a href="tel:5613191272"><b>561-319-1272</b></a>.</p>
+      </div></section>
+
+      <footer style={{ background: 'var(--soil-900)', color: 'rgba(255,255,255,.78)', padding: '30px 0' }}><div className="wrap" style={{ display: 'flex', flexWrap: 'wrap', gap: 16, alignItems: 'center', padding: '0 40px' }}>
+        <img src="assets/logo-horizontal-white.png" alt="Urban Abundance" style={{ height: 32 }} />
+        <span style={{ fontFamily: 'var(--font-ui)', fontSize: 14 }}>© Urban Abundance 2026 · Lake Worth Beach, FL</span>
+        <a href="mailto:info@urbanabundance.com" style={{ marginLeft: 'auto', fontFamily: 'var(--font-ui)', fontSize: 14, color: 'var(--green-lime)' }}>info@urbanabundance.com</a>
+      </div></footer>
+    </div>
+  );
+}
+window.Thanks = Thanks;
+
+</script>
+<script type="text/babel" data-presets="react">
+(function () {
+// Standalone landing-page entry. #thanks shows the confirmation view, so the Jobber
+// redirect can point at vsl.html#thanks and keep the visitor on this page.
+function Landing() {
+  const isThanks = () => (window.location.hash || '').indexOf('thanks') >= 0;
+  const [thanks, setThanks] = React.useState(isThanks);
+  React.useEffect(() => {
+    const onHash = () => setThanks(isThanks());
+    window.addEventListener('hashchange', onHash);
+    return () => window.removeEventListener('hashchange', onHash);
+  }, []);
+  // Links out of this page go to the main site rather than swapping views.
+  const go = (id) => { window.location.href = 'index.html#/' + (id === 'home' ? '' : id); };
+  return thanks ? <window.Thanks go={go} /> : <window.VSL go={go} />;
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Landing />);
+})();
+</script>
+</body></html>
