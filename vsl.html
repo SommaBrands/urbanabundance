@@ -16,6 +16,27 @@
 <meta name="twitter:image" content="./assets/photos/luxury-patio.jpg">
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="site.css">
+<style>
+/* VSL-only responsive rules. Scoped to this page; site.css is untouched. */
+@media (max-width:820px){
+  .vsl-head .wrap{padding:12px 20px !important;gap:12px !important}
+  .vsl-head img{height:32px !important}
+  .vsl-head .btn.sm{font-size:13.5px;padding:11px 16px}
+  .vsl-hero{padding:34px 0 14px !important}
+  .vsl-video{border-radius:18px 18px 64px 18px !important}
+  .vsl-timeline{grid-template-columns:1fr !important;gap:4px !important}
+  .vsl-timeline > div:first-child{border-radius:18px 4px 4px 4px !important}
+  .vsl-timeline > div:last-child{border-radius:4px 4px 18px 18px !important}
+  .vsl-book{padding:56px 0 68px !important}
+  .vsl-foot .wrap{padding:0 20px !important}
+  .vsl-foot span[style*="auto"]{margin-left:0 !important}
+}
+@media (max-width:620px){
+  .vsl-head-tel{display:none}
+  .vsl-head .wrap{padding:11px 16px !important}
+  .vsl-video{border-radius:14px 14px 48px 14px !important}
+}
+</style>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
@@ -132,10 +153,12 @@ function Header({ page, go }) {
           <div style={{ position: 'relative' }} onMouseEnter={() => setMoreOpen(true)} onMouseLeave={() => setMoreOpen(false)}>
             <a className={moreActive ? 'active' : ''} style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }} onClick={() => setMoreOpen(o => !o)}>More <span style={{ display: 'inline-block', transform: moreOpen ? 'rotate(180deg)' : 'none', transition: 'transform .18s', fontSize: 11 }}>▾</span></a>
             {moreOpen && (
-              <div style={{ position: 'absolute', top: '100%', left: -14, marginTop: 8, minWidth: 190, background: '#fff', border: '1px solid var(--sand-200)', borderRadius: 12, boxShadow: '0 16px 36px rgba(51,48,42,.14)', padding: 8, zIndex: 50 }}>
-                {MORE.map(([label, id]) => (
-                  <a key={id} onClick={() => { setMoreOpen(false); go(id); }} style={{ display: 'block', padding: '10px 12px', borderRadius: 8, fontFamily: 'var(--font-ui)', fontWeight: 600, fontSize: 15, color: page === id ? 'var(--green-deep)' : 'var(--soil-700)', background: page === id ? 'var(--bone)' : 'transparent' }}>{label}</a>
-                ))}
+              <div style={{ position: 'absolute', top: '100%', left: -14, paddingTop: 8, minWidth: 190, zIndex: 50 }}>
+                <div style={{ background: '#fff', border: '1px solid var(--sand-200)', borderRadius: 12, boxShadow: '0 16px 36px rgba(51,48,42,.14)', padding: 8 }}>
+                  {MORE.map(([label, id]) => (
+                    <a key={id} href={'/' + id} onClick={(e) => { e.preventDefault(); setMoreOpen(false); go(id); }} onMouseEnter={(e) => { if (page !== id) e.currentTarget.style.background = 'var(--bone)'; }} onMouseLeave={(e) => { if (page !== id) e.currentTarget.style.background = 'transparent'; }} style={{ display: 'block', padding: '10px 12px', borderRadius: 8, fontFamily: 'var(--font-ui)', fontWeight: 600, fontSize: 15, cursor: 'pointer', textDecoration: 'none', transition: 'background .14s', color: page === id ? 'var(--green-deep)' : 'var(--soil-700)', background: page === id ? 'var(--bone)' : 'transparent' }}>{label}</a>
+                  ))}
+                </div>
               </div>
             )}
           </div>
@@ -249,12 +272,10 @@ function jobberFormUrl() {
 
 // The official Jobber snippet initializes once per page load, so on client-side
 // navigation it will not rebuild its iframe. We run the snippet first (correct
-// behavior on a cold load) and, if no iframe appears, insert Jobber's own embedded
-// form frame ourselves — the same URL the snippet builds — so the form is always
-// there and always submits into Jobber.
-const JOBBER_EMBED_FRAME = 'https://clienthub.getjobber.com/hubs/c319abfc-2bea-46a6-9f0c-2fa719699013/public/requests/1583819/embedded_new?source=embedded_inline';
-
+// behavior on a cold load) and, if no iframe appears, mount the same form_url the
+// snippet uses ourselves — so the form is always there and always submits into Jobber.
 function jobberEmbedFrameUrl() {
+  const url = jobberFormUrl();
   const p = new URLSearchParams();
   p.set('source', 'embedded_inline');
   try {
@@ -262,7 +283,7 @@ function jobberEmbedFrameUrl() {
     p.set('ga_page_title', document.title);
     if (document.referrer) p.set('ga_page_referrer', document.referrer);
   } catch (e) {}
-  return JOBBER_EMBED_FRAME.split('?')[0] + '?' + p.toString();
+  return url + '&' + p.toString();
 }
 
 function JobberForm() {
@@ -350,11 +371,11 @@ Object.assign(window, { Ticker, Header, Footer, CTABand, Reveal, JobberForm, UA_
 function VSLHeader({ go }) {
   const scroll = () => { const el = document.getElementById('book'); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 20, behavior: 'smooth' }); };
   return (
-    <header style={{ position: 'sticky', top: 0, zIndex: 40, background: 'rgba(252,251,246,.92)', backdropFilter: 'blur(10px)', borderBottom: '1px solid var(--sand-200)' }}>
+    <header className="vsl-head" style={{ position: 'sticky', top: 0, zIndex: 40, background: 'rgba(252,251,246,.92)', backdropFilter: 'blur(10px)', borderBottom: '1px solid var(--sand-200)' }}>
       <div className="wrap" style={{ display: 'flex', alignItems: 'center', gap: 18, padding: '14px 40px' }}>
         <img src="assets/logo-horizontal.png" alt="Urban Abundance" style={{ height: 40, cursor: 'pointer' }} onClick={() => go('home')} />
         <span style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 16 }}>
-          <a href="tel:5613191272" style={{ fontFamily: 'var(--font-ui)', fontWeight: 700, fontSize: 15, color: 'var(--green-deep)' }}>561-319-1272</a>
+          <a href="tel:5613191272" className="vsl-head-tel" style={{ fontFamily: 'var(--font-ui)', fontWeight: 700, fontSize: 15, color: 'var(--green-deep)' }}>561-319-1272</a>
           <a className="btn btn-lime sm" onClick={scroll}>Get on the install calendar</a>
         </span>
       </div>
@@ -370,13 +391,13 @@ function VSL({ go }) {
       <VSLHeader go={go} />
 
       {/* HERO — the video is the star */}
-      <section style={{ padding: '52px 0 20px' }}><div className="wrap" style={{ maxWidth: 1040 }}>
+      <section className="vsl-hero" style={{ padding: '52px 0 20px' }}><div className="wrap" style={{ maxWidth: 1040 }}>
         <div style={{ textAlign: 'center', marginBottom: 30 }}>
           <p className="eyebrow" style={{ textAlign: 'center' }}>Watch: 1 minute · South Florida</p>
           <h1 className="display" style={{ fontSize: 74, marginBottom: 18, lineHeight: 1.02 }}>The season doesn't start in October.<br />It starts <span className="hl">now.</span></h1>
           <p className="lede" style={{ maxWidth: 600, margin: '0 auto' }}>Florida grows year-round — but a garden doesn't produce the day you build it. Soil has to wake up, beds have to settle, roots have to get down. Install this summer and you're already rolling when the peak season hits.</p>
         </div>
-        <div style={{ width: '100%', aspectRatio: '16 / 9', background: 'var(--soil-900)', borderRadius: '24px 24px 110px 24px', boxShadow: '0 30px 60px rgba(51,48,42,.18)', overflow: 'hidden' }}>
+        <div className="vsl-video" style={{ width: '100%', aspectRatio: '16 / 9', background: 'var(--soil-900)', borderRadius: '24px 24px 110px 24px', boxShadow: '0 30px 60px rgba(51,48,42,.18)', overflow: 'hidden' }}>
           <iframe
             src="https://www.youtube-nocookie.com/embed/zxNw15K6Wuk?rel=0&modestbranding=1&playsinline=1"
             title="The season doesn't start in October — Urban Abundance"
@@ -413,22 +434,21 @@ function VSL({ go }) {
       <section className="section tight"><div className="wrap" style={{ maxWidth: 1000 }}>
         <div className="sec-head center" style={{ marginBottom: 40 }}>
           <p className="eyebrow" style={{ textAlign: 'center' }}>The Florida growing year</p>
-          <h2 className="display">There is no <span className="hl leaf">dead season.</span></h2>
+          <h2 className="display">Wait until fall, and you'll spend your best months <span className="hl leaf">catching up.</span></h2>
           <p className="lede">Summer feeds you here if you plant for it — and October is when this place absolutely goes off. The gardens that get all eight peak months are the ones built before it starts.</p>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: 4, marginBottom: 18 }}>
+        <div className="vsl-timeline" style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: 4 }}>
           {[
             ['Jul – Sep', 'Build + summer crops', 'Okra, sweet potato, peppers, Everglades tomatoes, tropical greens and herbs — going strong in the heat while your soil wakes up.', 'var(--green-mist)', 'var(--soil-900)'],
             ['Oct – May', 'Peak season — eight straight months', 'Greens, tomatoes, beans, brassicas, all of it, while the rest of the country is frozen. Nothing to catch up on if you started early.', 'var(--green-deep)', '#fff'],
           ].map(([span, label, body, bg, fg], i) => (
             <div key={span} style={{ background: bg, color: fg, padding: '26px 28px 28px', borderRadius: i === 0 ? '18px 4px 4px 18px' : '4px 18px 18px 4px' }}>
-              <div style={{ fontFamily: 'var(--font-ui)', fontWeight: 700, fontSize: 12.5, letterSpacing: '.14em', textTransform: 'uppercase', opacity: .8, marginBottom: 8 }}>{span}</div>
-              <div className="display" style={{ fontSize: 27, marginBottom: 10, lineHeight: 1.12 }}>{label}</div>
-              <p style={{ fontSize: 15.5, lineHeight: 1.6, margin: 0, opacity: i === 0 ? 1 : .92 }}>{body}</p>
+              <div style={{ fontFamily: 'var(--font-ui)', fontWeight: 700, fontSize: 12.5, letterSpacing: '.14em', textTransform: 'uppercase', opacity: i === 0 ? .75 : .95, marginBottom: 8 }}>{span}</div>
+              <div className="display" style={{ fontSize: 27, marginBottom: 10, lineHeight: 1.12, color: fg }}>{label}</div>
+              <p style={{ fontSize: 15.5, lineHeight: 1.6, margin: 0 }}>{body}</p>
             </div>
           ))}
         </div>
-        <p style={{ fontFamily: 'var(--font-ui)', fontSize: 16.5, fontWeight: 700, color: 'var(--soil-900)', textAlign: 'center', margin: 0 }}>Wait until fall, and you'll spend your best months catching up.</p>
       </div></section>
 
       {/* WHAT YOU GET */}
@@ -456,12 +476,12 @@ function VSL({ go }) {
       {/* TESTIMONIAL */}
       <section className="band-oat" style={{ padding: '72px 0' }}><div className="narrow" style={{ textAlign: 'center' }}>
         <Stars size={17} />
-        <p className="display" style={{ fontSize: 34, lineHeight: 1.28, margin: '18px auto 16px', maxWidth: 760 }}>“The kids will eat a pepper because they grew it. We went from a patch of grass to picking salad for dinner — and they handle everything.”</p>
-        <p style={{ fontFamily: 'var(--font-ui)', fontWeight: 700, fontSize: 15, color: 'var(--taupe)', margin: 0 }}>Jupiter, FL · Stewardship member</p>
+        <p className="display" style={{ fontSize: 'clamp(23px, 5.4vw, 34px)', lineHeight: 1.28, margin: '18px auto 16px', maxWidth: 760 }}>“The kids will eat a pepper because they grew it. We went from a patch of grass to picking salad for dinner — and they handle everything.”</p>
+        <p style={{ fontFamily: 'var(--font-ui)', fontWeight: 700, fontSize: 15, color: 'var(--taupe)', margin: 0 }}>Jupiter, FL · Jeff R.</p>
       </div></section>
 
       {/* FORM */}
-      <section id="book" style={{ padding: '80px 0 96px', scrollMarginTop: 20 }}><div className="wrap">
+      <section id="book" className="vsl-book" style={{ padding: '80px 0 96px', scrollMarginTop: 20 }}><div className="wrap">
         <div className="sec-head center" style={{ marginBottom: 40 }}>
           <p className="eyebrow" style={{ textAlign: 'center' }}>Come grow with us</p>
           <h2 className="display">Tell us about your <span className="hl">yard.</span></h2>
@@ -496,7 +516,7 @@ function VSL({ go }) {
       </div></section>
 
       {/* SLIM FOOTER */}
-      <footer style={{ background: 'var(--soil-900)', color: 'rgba(255,255,255,.78)', padding: '34px 0' }}><div className="wrap" style={{ display: 'flex', flexWrap: 'wrap', gap: 18, alignItems: 'center', padding: '0 40px' }}>
+      <footer className="vsl-foot" style={{ background: 'var(--soil-900)', color: 'rgba(255,255,255,.78)', padding: '34px 0' }}><div className="wrap" style={{ display: 'flex', flexWrap: 'wrap', gap: 18, alignItems: 'center', padding: '0 40px' }}>
         <img src="assets/logo-horizontal-white.png" alt="Urban Abundance" style={{ height: 34 }} />
         <span style={{ fontFamily: 'var(--font-ui)', fontSize: 14 }}>© Urban Abundance 2026 · Installs for fall/winter harvests are filling up.</span>
         <span style={{ marginLeft: 'auto', display: 'flex', gap: 18, fontFamily: 'var(--font-ui)', fontSize: 14 }}>
